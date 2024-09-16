@@ -3,6 +3,7 @@
 
 typedef struct MLData {
     // ML-specific data
+    int placeholder;
 } MLData;
 
 static void* ml_create_from_generic_data(GenericData* data) {

@@ -3,6 +3,7 @@
 
 typedef struct MathData {
     // Math-specific data
+    int placeholder;
 } MathData;
 
 static void* math_create_from_generic_data(GenericData* data) {

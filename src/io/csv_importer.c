@@ -3,6 +3,7 @@
 
 GenericData* import_csv(const char* filename) {
     // Implementation
+    return NULL;
 }
 
 void destroy_generic_data(GenericData* data) {
