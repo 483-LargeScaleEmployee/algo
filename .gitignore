@@ -50,3 +50,13 @@ modules.order
 Module.symvers
 Mkfile.old
 dkms.conf
+
+# Build results
+build/ubuntu/*
+build/windows/*
+build/mac/*
+
+# But don't ignore the subdirectories themselves
+!build/ubuntu/.gitkeep
+!build/windows/.gitkeep
+!build/mac/.gitkeep
