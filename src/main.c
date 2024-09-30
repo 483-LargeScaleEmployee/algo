@@ -5,7 +5,9 @@
 #include <stdio.h>
 
 int main() {
-  GenericData *data = import_csv("data.csv");
+  InputData *data = import_csv("data.csv");
+
+  return 0;
 
   const DataProcessor *processor;
   void *processed_data;
