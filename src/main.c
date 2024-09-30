@@ -5,7 +5,7 @@
 #include <stdio.h>
 
 int main() {
-  InputData *data = import_csv("data.csv");
+  InputData *data = import_csv("../../input");
 
   return 0;
 
@@ -20,7 +20,7 @@ int main() {
     processor = &MATH_PROCESSOR;
   }
 
-  processed_data = processor->create_from_generic_data(data);
+  processed_data = processor->create_from_input_data(data);
   processor->process_data(processed_data);
   StandardizedOutput *output = processor->convert_to_output(processed_data);
 
