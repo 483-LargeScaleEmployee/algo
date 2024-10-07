@@ -148,10 +148,10 @@ int import_employee_cube(const char *employee_file_path, EmployeeCube *cube,
         employee_info[employee_index].employee_type =
             get_employee_type_index(field);
       } else {
-        uint sprint_day_index = field_count - 2;
+        uint32_t sprint_day_index = field_count - 2;
         // need to parse, first the array, then the shift, then a boolean
         // the field is a string, each subfield is separated by a space
-        uint subfield_index = 0;
+        uint32_t subfield_index = 0;
         char *subfield = strtok(field, " ");
         while (subfield != NULL) {
           if (subfield_index == 0) {
