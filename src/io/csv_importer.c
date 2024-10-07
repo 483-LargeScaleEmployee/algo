@@ -1,6 +1,5 @@
 #include "../../include/io/csv_importer.h"
 #include <complex.h>
-#include <dirent.h>
 #include <errno.h>
 #include <stdbool.h>
 #include <stdint.h>
@@ -8,6 +7,12 @@
 #include <stdlib.h>
 #include <string.h>
 #include <sys/stat.h>
+
+#ifdef _WIN32
+#include <windows.h>
+#else
+#include <dirent.h>
+#endif
 
 const int DEPARTMENT_COUNT = 10;
 
