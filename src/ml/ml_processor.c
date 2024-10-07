@@ -28,8 +28,8 @@ static StandardizedOutput *ml_convert_to_output(void *data) {
 
 static void ml_destroy(void *data) { free(data); }
 
-const DataProcessor ML_PROCESSOR = {.create_from_input_data =
-                                        ml_create_from_input_data,
-                                    .process_data = ml_process_data,
-                                    .convert_to_output = ml_convert_to_output,
-                                    .destroy = ml_destroy};
+const DataProcessor ML_PROCESSOR = {
+    .create_from_input_data = ml_create_from_input_data,
+    .process_data = ml_process_data,
+    .convert_to_output = ml_convert_to_output,
+};

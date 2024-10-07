@@ -1,13 +1,17 @@
 #include "../include/io/csv_importer.h"
+#include "../include/io/input_data_funcs.h"
 #include "../include/io/output_handler.h"
 #include "../include/math/math_processor.h"
 #include "../include/ml/ml_processor.h"
 #include <stdio.h>
 
 int main() {
-  InputData *data = import_csv("../../input");
+  InputData data = import_csv("../../input");
 
-  return 0;
+  printf("Random queries for testing:\n");
+  printf("Is employee_available: %d\n", is_employee_available(&data, 0, 0, 0));
+  printf("Does employee prefer: %d\n", does_employee_prefer(&data, 0, 0, 0));
+  printf("Get needed employees: %d\n", get_needed_employees(&data, 0, 0, 0, 0));
 
   const DataProcessor *processor;
   void *processed_data;
@@ -20,16 +24,14 @@ int main() {
     processor = &MATH_PROCESSOR;
   }
 
-  processed_data = processor->create_from_input_data(data);
+  processed_data = processor->create_from_input_data(&data);
   processor->process_data(processed_data);
   StandardizedOutput *output = processor->convert_to_output(processed_data);
 
   send_to_frontend(output);
 
   // Clean up
-  processor->destroy(processed_data);
   destroy_standardized_output(output);
-  destroy_generic_data(data);
 
   printf("Program completed successfully!\n"); // Add this line
 

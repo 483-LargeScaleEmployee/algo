@@ -30,4 +30,4 @@ const DataProcessor MATH_PROCESSOR = {
     .create_from_input_data = math_create_from_input_data,
     .process_data = math_process_data,
     .convert_to_output = math_convert_to_output,
-    .destroy = math_destroy};
+};

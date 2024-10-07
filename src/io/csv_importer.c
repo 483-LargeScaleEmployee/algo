@@ -9,26 +9,15 @@
 #include <string.h>
 #include <sys/stat.h>
 
-// employee_type -> employee_index -> sprint_day -> shift_index (0-3, index 4
-// for if employee requested day off)
-typedef struct {
-  uint8_t cube[3][1000][14][4];
-} EmployeeCube;
+const int DEPARTMENT_COUNT = 10;
 
-// 4 dimensions: department -> sprint day -> shift -> employee type -> employees
-// needed
-typedef struct {
-  uint8_t cube[10][14][3][3];
-} DataCube; // data cube is convention of how professor was referring to this
-
-// String representations
-static const char *SprintDayNames[] = {
-    "Monday",        "Tuesday",        "Wednesday",     "Thursday",
-    "Friday",        "Saturday",       "Sunday",        "Next Monday",
-    "Next Tuesday",  "Next Wednesday", "Next Thursday", "Next Friday",
-    "Next Saturday", "Next Sunday"};
-
-static const char *ShiftNames[] = {"Night", "Morning", "Evening"};
+uint8_t get_employee_type_index(const char *employee_type) {
+  for (uint8_t i = 0; i < 3; i++) {
+    if (strcmp(employee_type, EmployeeTypes[i]) == 0)
+      return i;
+  }
+  return -1;
+}
 
 uint8_t get_sprint_day_index(const char *day) {
   for (uint8_t i = 0; i < 14; i++) {
@@ -46,12 +35,111 @@ uint8_t get_shift_index(const char *shift) {
   return -1;
 }
 
-int import_data_cube(const char *departments_dir, DataCube *cube) {
+char *parse_csv_field(char **line_ptr) {
+  static char field[100];
+  char *cur = *line_ptr;
+  char *dest = field;
+  bool in_quotes = false;
+
+  while (*cur && (in_quotes || *cur != ',') && dest - field <= 100) {
+    if (*cur == '"') {
+      in_quotes = !in_quotes;
+    } else {
+      *dest++ = *cur;
+    }
+    cur++;
+  }
+
+  *dest = '\0';
+
+  if (*cur == ',') {
+    cur++;
+  }
+
+  *line_ptr = cur;
+  return field;
+}
+
+int import_employee_cube(const char *employee_file_path, EmployeeCube *cube,
+                         EmployeeInfo *employee_info) {
   if (cube == NULL) {
-    fprintf(stderr, "Error: DataCube pointer is NULL\n");
+    fprintf(stderr, "Error: EmployeeCube pointer is NULL\n");
     return -1;
   }
-  memset(cube, 0, sizeof(DataCube));
+  memset(cube, 0, sizeof(EmployeeCube));
+
+  FILE *file = fopen(employee_file_path, "r");
+  if (file == NULL) {
+    fprintf(stderr, "Error opening file: %s\n", employee_file_path);
+    return -1;
+  }
+
+  char line[4096];
+  int employee_index = -1;
+  while (fgets(line, sizeof(line), file)) {
+    if (employee_index == -1) {
+      employee_index++;
+      continue;
+    }
+
+    char *newline = strchr(line, '\n');
+    if (newline) {
+      *newline = '\0';
+    }
+
+    char *line_ptr = line;
+    int field_count = 0;
+    while (field_count < 14) {
+      char *field = parse_csv_field(&line_ptr);
+      if (field_count == 0) {
+        strcpy(employee_info[employee_index].name, field);
+      } else if (field_count == 1) {
+        employee_info[employee_index].employee_type =
+            get_employee_type_index(field);
+      } else {
+        uint sprint_day_index = field_count - 2;
+        // need to parse, first the array, then the shift, then a boolean
+        // the field is a string, each subfield is separated by a space
+        uint subfield_index = 0;
+        char *subfield = strtok(field, " ");
+        while (subfield != NULL) {
+          if (subfield_index == 0) {
+            cube->cube[employee_index][sprint_day_index][0] = atoi(subfield);
+          } else if (subfield_index == 1) {
+            // this is the preferred shift, it will match one of ShiftNames
+            if (strcmp(subfield, "Night") == 0) {
+              cube->cube[employee_index][sprint_day_index][1] = 0;
+            } else if (strcmp(subfield, "Morning") == 0) {
+              cube->cube[employee_index][sprint_day_index][1] = 1;
+            } else if (strcmp(subfield, "Evening") == 0) {
+              cube->cube[employee_index][sprint_day_index][1] = 2;
+            }
+          } else if (subfield_index == 2) {
+            // True means they have requested day off so we set available shifts
+            // to 0, indicating they have no available shifts
+            if (strcmp(subfield, "True") == 0) {
+              cube->cube[employee_index][sprint_day_index][0] = 0;
+            }
+          }
+          subfield = strtok(NULL, " ");
+          subfield_index++;
+        }
+      }
+      field_count++;
+    }
+    employee_index++;
+  }
+
+  fclose(file);
+  return 0;
+}
+
+int import_department_cube(const char *departments_dir, DepartmentCube *cube) {
+  if (cube == NULL) {
+    fprintf(stderr, "Error: DepartmentCube pointer is NULL\n");
+    return -1;
+  }
+  memset(cube, 0, sizeof(DepartmentCube));
   DIR *dir = opendir(departments_dir);
   if (dir == NULL) {
     fprintf(stderr, "Error opening directory %s: %s\n", departments_dir,
@@ -104,17 +192,24 @@ int import_data_cube(const char *departments_dir, DataCube *cube) {
   return 0;
 }
 
-InputData *import_csv(const char *input_dir) {
+InputData import_csv(const char *input_dir) {
   char departments_dir[256];
   snprintf(departments_dir, sizeof(departments_dir), "%s/departments",
            input_dir);
 
-  DataCube cube;
-  import_data_cube(departments_dir, &cube);
+  DepartmentCube departments_cube;
+  import_department_cube(departments_dir, &departments_cube);
 
-  return NULL;
-}
+  char employee_path[256];
+  strcpy(employee_path, input_dir);
+  strcat(employee_path, "/employees.csv");
 
-void destroy_generic_data(InputData *data) {
-  // Implementation
+  EmployeeCube employee_cube;
+  EmployeeInfo employee_info[1000];
+  import_employee_cube(employee_path, &employee_cube, employee_info);
+
+  InputData data = {.employee_info = *employee_info,
+                    .employee_cube = employee_cube,
+                    .department_cube = departments_cube};
+  return data;
 }
