@@ -9,9 +9,55 @@
 #include <sys/stat.h>
 
 #ifdef _WIN32
+#include <direct.h>
 #include <windows.h>
+#define mkdir(path, mode) _mkdir(path)
+
+struct dirent {
+  char d_name[MAX_PATH];
+};
+
+typedef struct {
+  WIN32_FIND_DATA find_data;
+  HANDLE find_handle;
+  struct dirent entry;
+  int eof;
+} DIR;
+
+DIR *opendir(const char *name);
+struct dirent *readdir(DIR *dir);
+int closedir(DIR *dir);
+
+DIR *opendir(const char *name) {
+  DIR *dir = malloc(sizeof(DIR));
+  if (dir) {
+    char path[MAX_PATH];
+    snprintf(path, sizeof(path), "%s\\*", name);
+    dir->find_handle = FindFirstFile(path, &dir->find_data);
+    dir->eof = (dir->find_handle == INVALID_HANDLE_VALUE);
+  }
+  return dir;
+}
+
+struct dirent *readdir(DIR *dir) {
+  if (dir->eof) return NULL;
+  strcpy(dir->entry.d_name, dir->find_data.cFileName);
+  dir->eof = !FindNextFile(dir->find_handle, &dir->find_data);
+  return &dir->entry;
+}
+
+int closedir(DIR *dir) {
+  if (dir) {
+    if (dir->find_handle != INVALID_HANDLE_VALUE) {
+      FindClose(dir->find_handle);
+    }
+    free(dir);
+  }
+  return 0;
+}
 #else
 #include <dirent.h>
+#include <sys/stat.h>
 #endif
 
 const int DEPARTMENT_COUNT = 10;
