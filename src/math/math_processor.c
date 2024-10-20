@@ -1,33 +1,26 @@
 #include "../../include/math/math_processor.h"
+#include "../../include/io/input_data_funcs.h"
+#include "math_utils.c"
+// #include <glpk.h>
 #include <stdlib.h>
 
-typedef struct MathData {
-  // Math-specific data
-  int placeholder;
-} MathData;
+static StandardizedOutput *process(InputData *data) {
+  // glp_prob *lp;
 
-static void *math_create_from_input_data(InputData *data) {
-  MathData *math_data = malloc(sizeof(MathData));
-  // Convert GenericData to MathData
-  return math_data;
+  size_t total_constraint_rows = get_total_constraint_rows();
+  // a[ia[i], ja[i]] = ar[i], so if i = 1, then this is the val of the
+  // constraint of the first row and first column
+  int ia[1 + total_constraint_rows], ja[1 + total_constraint_rows],
+      ar[1 + total_constraint_rows];
+
+  // lp = glp_create_prob();
+  // glp_set_prob_name(lp, "shift_scheduling");
+  // glp_set_obj_dir(lp, GLP_MAX);
+
+  // Process data
+  return NULL;
 }
-
-static void math_process_data(void *data) {
-  MathData *math_data = (MathData *)data;
-  // Process Math data
-}
-
-static StandardizedOutput *math_convert_to_output(void *data) {
-  MathData *math_data = (MathData *)data;
-  StandardizedOutput *output = malloc(sizeof(StandardizedOutput));
-  // Convert MathData to StandardizedOutput
-  return output;
-}
-
-static void math_destroy(void *data) { free(data); }
 
 const DataProcessor MATH_PROCESSOR = {
-    .create_from_input_data = math_create_from_input_data,
-    .process_data = math_process_data,
-    .convert_to_output = math_convert_to_output,
+    .process = process,
 };

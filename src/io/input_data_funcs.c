@@ -49,4 +49,15 @@ uint8_t get_needed_employees(const InputData *data, uint8_t sprint_day_idx,
       .cube[department_idx][sprint_day_idx][shift][employee_type];
 }
 
+//
+// TODO: implement these properly later based on dynamic problem bounds
+//
+int get_employee_count(const InputData *data) { return 1000; }
 
+int get_department_count(const InputData *data) { return 10; }
+
+int get_sprint_day_count(const InputData *data) { return 14; }
+
+int get_shift_count(const InputData *data) { return 3; }
+
+int get_employee_type_count(const InputData *data) { return 3; }

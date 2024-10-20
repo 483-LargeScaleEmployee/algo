@@ -14,7 +14,6 @@ int main() {
   printf("Get needed employees: %d\n", get_needed_employees(&data, 0, 0, 0, 0));
 
   const DataProcessor *processor;
-  void *processed_data;
 
   const int use_ml = 1;
   // Conditional logic to decide between ML and Math paths
@@ -24,14 +23,9 @@ int main() {
     processor = &MATH_PROCESSOR;
   }
 
-  processed_data = processor->create_from_input_data(&data);
-  processor->process_data(processed_data);
-  StandardizedOutput *output = processor->convert_to_output(processed_data);
+  StandardizedOutput *output = processor->process(&data);
 
   send_to_frontend(output);
-
-  // Clean up
-  destroy_standardized_output(output);
 
   printf("Program completed successfully!\n"); // Add this line
 
