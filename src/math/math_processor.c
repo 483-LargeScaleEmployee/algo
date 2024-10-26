@@ -1,8 +1,8 @@
 #include "../../include/math/math_processor.h"
 #include "math_utils.c"
-#include <glpk.h>
-#include <stdlib.h>
+#include "../../include/glpk.h"
 #include <stdio.h>
+#include <stdlib.h>
 
 int example_solve() {
   glp_prob *lp;
