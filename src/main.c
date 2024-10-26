@@ -10,9 +10,12 @@ int main(int argc, char *argv[]) {
   const char *input_dir = NULL;
   bool use_ml = false; // Default to math processing
 
+  printf("Expected usage: ./algo.exe <input_dir> [--ml | --math]\n");
   for (int i = 1; i < argc; i++) {
     if (strcmp(argv[i], "--ml") == 0) {
       use_ml = true;
+    } else if (strcmp(argv[i], "--math") == 0) {
+      use_ml = false;
     } else if (input_dir == NULL) {
       input_dir = argv[i];
     } else {
