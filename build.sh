@@ -8,7 +8,7 @@ OUTPUT="algo.exe"
 
 # Compiler configuration
 MINGW=x86_64-w64-mingw32-gcc
-CFLAGS="-I${INCLUDE_DIR} -I${GLPK_DIR} -O2"
+CFLAGS="-I${INCLUDE_DIR} -I${GLPK_DIR}/include -O2"
 LDFLAGS="-L${GLPK_DIR} -lglpk_4_65"
 
 # Download GLPK if not present
