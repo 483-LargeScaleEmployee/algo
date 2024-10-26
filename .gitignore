@@ -1,62 +1,23 @@
-# Prerequisites
-*.d
-
-# Object files
-*.o
-*.ko
-*.obj
-*.elf
-
-# Linker output
-*.ilk
-*.map
-*.exp
-
-# Precompiled Headers
-*.gch
-*.pch
-
-# Libraries
-*.lib
-*.a
-*.la
-*.lo
-
-# Shared objects (inc. Windows DLLs)
-*.dll
-*.so
-*.so.*
-*.dylib
-
-# Executables
 *.exe
-*.out
-*.app
-*.i*86
-*.x86_64
-*.hex
+*.dll
 
-# Debug files
-*.dSYM/
-*.su
-*.idb
-*.pdb
+# GLPK downloaded files
+glpk-4.65/
+winglpk-4.65.zip
 
-# Kernel Module Compile Results
-*.mod*
-*.cmd
-.tmp_versions/
-modules.order
-Module.symvers
-Mkfile.old
-dkms.conf
+# IDE specific files
+.vscode/
+.idea/
+*.swp
+*.swo
 
-# Build results
-build/ubuntu/*
-build/windows/*
-build/mac/*
+# OS specific files
+.DS_Store
+Thumbs.db
 
-# But don't ignore the subdirectories themselves
-!build/ubuntu/.gitkeep
-!build/windows/.gitkeep
-!build/mac/.gitkeep
+# Log files
+*.log
+
+# Temporary files
+*.tmp
+*~
