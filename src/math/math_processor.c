@@ -1,5 +1,4 @@
 #include "../../include/math/math_processor.h"
-#include "../../include/io/input_data_funcs.h"
 #include "math_utils.c"
 // #include <glpk.h>
 #include <stdlib.h>
