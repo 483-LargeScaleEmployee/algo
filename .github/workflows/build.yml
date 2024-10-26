@@ -36,6 +36,7 @@ jobs:
       run: |
         mkdir release
         cp algo.exe release/
+        cp glpk_4_65.dll release/
         cp -r input release/
     
     - name: Upload Package
@@ -43,9 +44,3 @@ jobs:
       with:
         name: exe-with-input
         path: release/
-
-    - name: Upload Exe Standalone
-      uses: actions/upload-artifact@v3
-      with:
-        name: algo.exe
-        path: algo.exe
