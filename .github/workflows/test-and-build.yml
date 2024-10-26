@@ -30,3 +30,17 @@ jobs:
     - name: Test
       run: |
         wine ./algo.exe "input" --math
+
+
+    - name: Package for Upload
+      run: |
+        mkdir release
+        cp algo.exe release/
+        cp glpk_4_65.dll release/
+        cp -r input release/
+    
+    - name: Upload Package
+      uses: actions/upload-artifact@v3
+      with:
+        name: exe-with-input
+        path: release/
