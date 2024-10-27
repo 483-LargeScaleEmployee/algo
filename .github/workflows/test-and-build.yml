@@ -32,7 +32,8 @@ jobs:
     # Run test
     - name: Test
       run: |
-        wine ./algo.exe "input" --math
+        mkdir -p output
+        wine ./algo.exe "input" "output" --math
 
 
     - name: Package for Upload
@@ -41,6 +42,7 @@ jobs:
         cp algo.exe release/
         cp glpk_4_65.dll release/
         cp -r input release/
+        cp -r output release/
         
         cd release
         zip -r ../release.zip ./*
