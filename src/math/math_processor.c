@@ -53,17 +53,7 @@ int example_solve() {
 }
 
 static StandardizedOutput *process(InputData *data) {
-  // glp_prob *lp;
-
-  size_t total_constraint_rows = get_total_constraint_rows();
-  // a[ia[i], ja[i]] = ar[i], so if i = 1, then this is the val of the
-  // constraint of the first row and first column
-  int ia[1 + total_constraint_rows], ja[1 + total_constraint_rows],
-      ar[1 + total_constraint_rows];
-
   example_solve();
-
-  // Process data
   return NULL;
 }
 
