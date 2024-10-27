@@ -4,7 +4,7 @@
 #include <stdlib.h>
 
 typedef struct {
-  char name[100];
+  char name[256];
   uint8_t employee_type;
 } EmployeeInfo;
 
@@ -16,6 +16,11 @@ typedef struct {
   size_t num_employee_types;
 } FiveDimensionConfig;
 
+// employee_index -> sprint_day -> shift -> 2 u8s
+//
+// first u8 is if they are available
+// second u8 is if they prefer
+//
 // employee vec: (num employees) x (num sprint days) x (num shifts)
 typedef struct {
   uint8_t *vec;
@@ -23,8 +28,12 @@ typedef struct {
 
 #define EMPLOYEE_VEC_INDEX(config, employee_idx, sprint_day_idx, shift_idx)    \
   ((employee_idx) * config->num_sprint_days * 3 + (sprint_day_idx) * 3 +       \
-   (shift_idx))
+   (shift_idx)) *                                                              \
+      2 // 2 u8s per entry
 
+// department_idx -> employee_type -> sprint_day -> shift_idx -> u8
+// where u8 is the num of employees of that type needed on the sprint day on the
+// shift in the department
 typedef struct {
   uint8_t *vec;
 } DepartmentVec;
