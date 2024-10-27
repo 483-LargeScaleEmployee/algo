@@ -21,3 +21,7 @@ Thumbs.db
 # Temporary files
 *.tmp
 *~
+
+# output files
+schedule.csv
+schedule_machine.csv
