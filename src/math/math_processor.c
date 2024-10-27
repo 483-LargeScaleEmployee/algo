@@ -6,34 +6,133 @@
 #include <stdint.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
-void main_solve(const InputData *data) {
+static int compare_assignments(const void *a, const void *b) {
+  typedef struct {
+    const char *employee_name;
+    const char *employee_type;
+    int day;
+    int shift;
+  } Assignment;
+
+  const Assignment *aa = (const Assignment *)a;
+  const Assignment *bb = (const Assignment *)b;
+
+  if (aa->day != bb->day)
+    return aa->day - bb->day;
+  if (aa->shift != bb->shift)
+    return aa->shift - bb->shift;
+  return strcmp(aa->employee_name, bb->employee_name);
+}
+
+void write_machine_readable_csv(const char *output_dir, const InputData *data,
+                                glp_prob *lp) {
+  char filepath[512];
+  snprintf(filepath, sizeof(filepath), "%s/schedule_machine.csv", output_dir);
+
+  FILE *file = fopen(filepath, "w");
+  if (!file) {
+    printf("Error: Could not open %s for writing\n", filepath);
+    return;
+  }
+
+  fprintf(file, "employee_idx,employee_type_idx,day_idx,shift_idx\n");
+
+  int num_vars = glp_get_num_cols(lp);
+  for (int i = 1; i <= num_vars; i++) {
+    double val = glp_mip_col_val(lp, i);
+    if (val > 0.5) {
+      int emp, day, shift;
+      glp_employee_vec_index_reverse(&data->config, i, &emp, &day, &shift);
+      fprintf(file, "%d,%d,%d,%d\n", emp,
+              data->employee_info[emp].employee_type, day, shift);
+    }
+  }
+  fclose(file);
+  printf("Machine-readable schedule written to %s\n", filepath);
+}
+
+void write_human_readable_csv(const char *output_dir, const InputData *data,
+                              glp_prob *lp) {
+  char filepath[512];
+  snprintf(filepath, sizeof(filepath), "%s/schedule_human.csv", output_dir);
+
+  FILE *file = fopen(filepath, "w");
+  if (!file) {
+    printf("Error: Could not open %s for writing\n", filepath);
+    return;
+  }
+
+  fprintf(file, "Employee,Type,Day,Shift\n");
+
+  typedef struct {
+    const char *employee_name;
+    const char *employee_type;
+    int day;
+    int shift;
+  } Assignment;
+
+  Assignment *assignments = malloc(glp_get_num_cols(lp) * sizeof(Assignment));
+  if (!assignments) {
+    printf("Error: Failed to allocate memory for assignments\n");
+    fclose(file);
+    return;
+  }
+
+  int num_assignments = 0;
+  int num_vars = glp_get_num_cols(lp);
+
+  for (int i = 1; i <= num_vars; i++) {
+    double val = glp_mip_col_val(lp, i);
+    if (val > 0.5) {
+      int emp, day, shift;
+      glp_employee_vec_index_reverse(&data->config, i, &emp, &day, &shift);
+
+      assignments[num_assignments].employee_name =
+          data->employee_info[emp].name;
+      assignments[num_assignments].employee_type =
+          data->metadata
+              .employee_type_names[data->employee_info[emp].employee_type];
+      assignments[num_assignments].day = day;
+      assignments[num_assignments].shift = shift;
+      num_assignments++;
+    }
+  }
+
+  qsort(assignments, num_assignments, sizeof(Assignment), compare_assignments);
+
+  for (int i = 0; i < num_assignments; i++) {
+    fprintf(file, "%s,%s,%s,%s\n", assignments[i].employee_name,
+            assignments[i].employee_type,
+            data->metadata.sprint_day_names[assignments[i].day],
+            data->metadata.shift_names[assignments[i].shift]);
+  }
+
+  free(assignments);
+  fclose(file);
+  printf("Human-readable schedule written to %s\n", filepath);
+}
+
+void main_solve(const InputData *data, const char *output_dir) {
   glp_prob *lp = glp_create_prob();
   glp_set_prob_name(lp, "Employee_Schedule");
-  glp_set_obj_dir(lp, GLP_MAX); // Maximize preferred shift matching
+  glp_set_obj_dir(lp, GLP_MAX);
 
-  int cur_row = 1; // Start at row 1 (GLPK uses 1-based indexing)
-
-  // Set up preferences and binary variables
+  int cur_row = 1;
   set_employee_preferences(lp, &data->employee_vec, &data->config);
-
-  // Add constraints
   add_availability_constraint(lp, &data->employee_vec, &data->config, &cur_row);
-  // add_department_needs_constraint(lp, &data->department_vec, &data->config,
-  //                                 data, &cur_row);
 
-  // Print problem size for debugging
   printf("Problem size:\n");
   printf("Rows (constraints): %d\n", glp_get_num_rows(lp));
   printf("Columns (variables): %d\n", glp_get_num_cols(lp));
   printf("Non-zeros: %d\n", glp_get_num_nz(lp));
 
-  // Configure and solve LP relaxation
   glp_smcp smcp;
   glp_init_smcp(&smcp);
-  smcp.msg_lev = GLP_MSG_ALL; // Show all messages for debugging
-  smcp.meth = GLP_PRIMAL;     // Use primal simplex
-  smcp.presolve = GLP_ON;     // Enable presolver
+  smcp.msg_lev = GLP_MSG_ALL;
+  smcp.meth = GLP_PRIMAL;
+  smcp.presolve = GLP_ON;
 
   printf("\nSolving LP relaxation...\n");
   int lp_result = glp_simplex(lp, &smcp);
@@ -43,7 +142,6 @@ void main_solve(const InputData *data) {
     return;
   }
 
-  // Check LP solution status
   int lp_status = glp_get_status(lp);
   if (lp_status != GLP_OPT) {
     printf("LP relaxation not optimal. Status: %d\n", lp_status);
@@ -53,15 +151,14 @@ void main_solve(const InputData *data) {
 
   printf("LP relaxation solved. Objective: %f\n", glp_get_obj_val(lp));
 
-  // Configure and solve integer problem
   glp_iocp iocp;
   glp_init_iocp(&iocp);
-  iocp.msg_lev = GLP_MSG_ALL; // Show all messages
-  iocp.presolve = GLP_ON;     // Enable presolver
-  iocp.br_tech = GLP_BR_PCH;  // Hybrid branching
-  iocp.bt_tech = GLP_BT_BLB;  // Best local bound
-  iocp.fp_heur = GLP_ON;      // Enable feasibility pump
-  iocp.tm_lim = 60000;        // 60 second time limit
+  iocp.msg_lev = GLP_MSG_ALL;
+  iocp.presolve = GLP_ON;
+  iocp.br_tech = GLP_BR_PCH;
+  iocp.bt_tech = GLP_BT_BLB;
+  iocp.fp_heur = GLP_ON;
+  iocp.tm_lim = 60000;
 
   printf("\nSolving MIP problem...\n");
   int mip_result = glp_intopt(lp, &iocp);
@@ -71,41 +168,25 @@ void main_solve(const InputData *data) {
     return;
   }
 
-  // Check MIP solution status
   int mip_status = glp_mip_status(lp);
-  if (mip_status != GLP_OPT) {
-    printf("MIP solution not optimal. Status: %d\n", mip_status);
-    if (mip_status == GLP_FEAS) {
-      printf("But feasible solution found.\n");
-    }
+  if (mip_status != GLP_OPT && mip_status != GLP_FEAS) {
+    printf("MIP solution not optimal or feasible. Status: %d\n", mip_status);
     glp_delete_prob(lp);
     return;
   }
 
-  // Process results
   double obj_val = glp_mip_obj_val(lp);
   printf("\nSolution found!\n");
   printf("Objective value: %f\n", obj_val);
 
-  // Get solution values
-  int num_vars = glp_get_num_cols(lp);
-  int assignments = 0;
-  for (int i = 1; i <= num_vars; i++) {
-    double val = glp_mip_col_val(lp, i);
-    if (val > 0.5) {
-      int emp, day, shift;
-      glp_employee_vec_index_reverse(&data->config, i, &emp, &day, &shift);
-      printf("Employee %d (%s) assigned to day %d, shift %d\n", emp,
-             data->employee_info[emp].name, day, shift);
-    }
-  }
-  printf("\nTotal assignments: %d\n", assignments);
+  write_machine_readable_csv(output_dir, data, lp);
+  write_human_readable_csv(output_dir, data, lp);
 
   glp_delete_prob(lp);
 }
 
-static StandardizedOutput *process(InputData *data) {
-  main_solve(data);
+static StandardizedOutput *process(InputData *data, const char *output_dir) {
+  main_solve(data, output_dir);
   return NULL;
 }
 

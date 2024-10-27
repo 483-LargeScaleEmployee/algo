@@ -30,9 +30,13 @@ void print_all_employee_info(const InputData *data) {
 
 int main(int argc, char *argv[]) {
   const char *input_dir = NULL;
+  const char *output_dir = NULL;
   bool use_ml = false; // Default to math processing
 
-  printf("Expected usage: ./algo.exe <input_dir> [--ml | --math]\n");
+  printf(
+      "Expected usage: ./algo.exe <input_dir> <output_dir> [--ml | --math]\n");
+  printf("Surround directories with quotes\n");
+
   for (int i = 1; i < argc; i++) {
     if (strcmp(argv[i], "--ml") == 0) {
       use_ml = true;
@@ -40,6 +44,8 @@ int main(int argc, char *argv[]) {
       use_ml = false;
     } else if (input_dir == NULL) {
       input_dir = argv[i];
+    } else if (output_dir == NULL) {
+      output_dir = argv[i];
     } else {
       printf("Error: Unexpected argument '%s'\n", argv[i]);
       return 1;
@@ -63,7 +69,7 @@ int main(int argc, char *argv[]) {
   } else {
     processor = &MATH_PROCESSOR;
   }
-  StandardizedOutput *output = processor->process(data);
+  StandardizedOutput *output = processor->process(data, output_dir);
 
   // send_to_frontend(output);
 
