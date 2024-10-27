@@ -1,10 +1,32 @@
 #include "../include/io/csv_importer.h"
-#include "../include/io/input_data_funcs.h"
 #include "../include/math/math_processor.h"
 #include "../include/ml/ml_processor.h"
 #include <stdbool.h>
 #include <stdio.h>
 #include <string.h>
+
+void print_all_department_headers(const InputData *data) {
+  for (int i = 0; i < data->config.num_departments; i++) {
+    printf("Department %d: %s\n", i, data->metadata.department_names[i]);
+  }
+  for (int i = 0; i < data->config.num_employee_types; i++) {
+    printf("Employee Type %d: %s\n", i, data->metadata.employee_type_names[i]);
+  }
+  for (int i = 0; i < data->config.num_sprint_days; i++) {
+    printf("Sprint Day %d: %s\n", i, data->metadata.sprint_day_names[i]);
+  }
+  for (int i = 0; i < data->config.num_shifts; i++) {
+    printf("Shift %d: %s\n", i, data->metadata.shift_names[i]);
+  }
+}
+
+void print_all_employee_info(const InputData *data) {
+  for (int i = 0; i < data->config.num_employees; i++) {
+    printf("Employee %d: %s, type: %s\n", i, data->employee_info[i].name,
+           data->metadata
+               .employee_type_names[data->employee_info[i].employee_type]);
+  }
+}
 
 int main(int argc, char *argv[]) {
   const char *input_dir = NULL;
@@ -31,18 +53,8 @@ int main(int argc, char *argv[]) {
 
   InputData *data = import_csv(input_dir);
 
-  // for (int i = 0; i < data->config.num_departments; i++) {
-  //   printf("Department %d: %s\n", i, data->metadata.department_names[i]);
-  // }
-  // for (int i = 0; i < data->config.num_employee_types; i++) {
-  //   printf("Employee Type %d: %s\n", i, data->metadata.employee_type_names[i]);
-  // }
-  // for (int i = 0; i < data->config.num_sprint_days; i++) {
-  //   printf("Sprint Day %d: %s\n", i, data->metadata.sprint_day_names[i]);
-  // }
-  // for (int i = 0; i < data->config.num_shifts; i++) {
-  //   printf("Shift %d: %s\n", i, data->metadata.shift_names[i]);
-  // }
+  // print_all_department_headers(data);
+  // print_all_employee_info(data);
 
   const DataProcessor *processor;
   // Conditional logic to decide between ML and Math paths

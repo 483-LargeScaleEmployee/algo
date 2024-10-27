@@ -27,7 +27,7 @@ typedef struct {
 } EmployeeVec;
 
 #define EMPLOYEE_VEC_INDEX(config, employee_idx, sprint_day_idx, shift_idx)    \
-  ((employee_idx) * config->num_sprint_days * 3 + (sprint_day_idx) * 3 +       \
+  ((employee_idx) * config->num_sprint_days * config->num_shifts + (sprint_day_idx) * config->num_shifts +       \
    (shift_idx)) *                                                              \
       2 // 2 u8s per entry
 
