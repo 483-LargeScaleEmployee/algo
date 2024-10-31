@@ -1,6 +1,6 @@
 #pragma once
-#include "../io/csv_importer.h"
-#include "../io/input_data_funcs.h"
+#include "../in/csv_importer.h"
+#include "../in/input_data_funcs.h"
 
 int glp_employee_vec_index(FiveDimensionConfig *config, int emp, int day,
                            int shift);

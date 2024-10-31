@@ -1,7 +1,7 @@
 #pragma once
 #include "../glpk.h"
-#include "../io/csv_importer.h"
-#include "../io/input_data_funcs.h"
+#include "../in/csv_importer.h"
+#include "../in/input_data_funcs.h"
 
 void add_availability_constraint(glp_prob *lp, EmployeeVec *employee_vec,
                                  FiveDimensionConfig *config, int* cur_row);

@@ -1,4 +1,4 @@
-#include "../../include/io/input_data_funcs.h"
+#include "../../include/in/input_data_funcs.h"
 #include <stdbool.h>
 #include <stdint.h>
 
