@@ -75,25 +75,22 @@ void add_department_needs_constraint(glp_prob *lp,
           // type
           int num_nonzero = 0;
 
-          // Look at all employees
           for (int emp = 0; emp < config->num_employees; emp++) {
-            // Only include employees of the correct type in this constraint
             if (input_data->employee_info[emp].employee_type == emp_type) {
               num_nonzero++;
 
               // Calculate the column number for this employee/day/shift
               int glpk_col = glp_employee_vec_index(config, emp, day, shift);
 
+              // reminder ind is indexed from 1, it is the column idx
+              // val is the coefficient, if an employee is scheduled here
+              // then it will count as 1.
               ind[num_nonzero] = glpk_col;
               val[num_nonzero] = 1.0; // Each employee counts as 1
             }
           }
 
-          // Set the constraint coefficients if we found any employees of this
-          // type
-          if (num_nonzero > 0) {
-            glp_set_mat_row(lp, row, num_nonzero, ind, val);
-          }
+          glp_set_mat_row(lp, row, num_nonzero, ind, val);
 
           row++;
         }
