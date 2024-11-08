@@ -7,8 +7,8 @@
 #define TEST_ASSERT(condition, message)                                        \
   do {                                                                         \
     if (!(condition)) {                                                        \
-      fprintf(stderr, "\nAssertion failed: %s\n", message);                    \
-      fprintf(stderr, "File: %s, Line: %d\n", __FILE__, __LINE__);             \
+      fprintf(stderr, "\n    Assertion failed: %s\n", message);                    \
+      fprintf(stderr, "    File: %s, Line: %d\n\n", __FILE__, __LINE__);             \
       exit(1);                                                                 \
     }                                                                          \
   } while (0)
