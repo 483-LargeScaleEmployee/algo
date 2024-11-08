@@ -24,17 +24,18 @@ jobs:
         sudo apt-get install -y wine64
 
     # Make build script executable and run it
-    - name: Build
+    - name: Build and Run Tests
+      run: |
+        chmod +x build_tests.sh
+        ./build_tests.sh
+
+    # Make build script executable and run it
+    - name: Build and execute
       run: |
         chmod +x build.sh
         ./build.sh
-
-    # Run test
-    - name: Test
-      run: |
         mkdir -p output
-        wine ./algo.exe "input" "output" --math
-
+        wine ./algo.exe "input" "output"
 
     - name: Package for Upload
       run: |
