@@ -80,22 +80,35 @@ OutputData main_solve(const InputData *data, const char *output_dir) {
                             .assignments = NULL,
                             .ran_successfully = true};
 
+  // counting assignments in order to allocate memory
   int num_vars = glp_get_num_cols(lp);
   for (int i = 1; i < num_vars; i++) {
     double val = glp_mip_col_val(lp, i);
-    if (val > 0.5) {
-      int emp, day, shift;
-      glp_employee_vec_index_reverse(&data->config, i, &emp, &day, &shift);
+    if (val == 1.0) {
       output_data.num_assignments++;
-      output_data.assignments =
-          realloc(output_data.assignments,
-                  output_data.num_assignments * sizeof(ShiftAssignment));
-      output_data.assignments[output_data.num_assignments - 1].employee_name =
+    }
+  }
+
+  output_data.assignments =
+      malloc(output_data.num_assignments * sizeof(ShiftAssignment));
+
+  int assignment_idx = 0;
+  for (int i = 1; i < num_vars; i++) {
+    double val = glp_mip_col_val(lp, i);
+    if (val == 1.0) {
+      int dep, emp, day, shift;
+      glp_schedule_vec_index_reverse(&data->config, i, &dep, &emp, &day,
+                                     &shift);
+
+      output_data.assignments[assignment_idx].employee_name =
           data->employee_info[emp].name;
-      output_data.assignments[output_data.num_assignments - 1].sprint_day_idx =
-          day;
-      output_data.assignments[output_data.num_assignments - 1].shift_idx =
-          shift;
+      output_data.assignments[assignment_idx].employee_type_idx =
+          data->employee_info[emp].employee_type;
+      output_data.assignments[assignment_idx].department_idx = dep;
+      output_data.assignments[assignment_idx].sprint_day_idx = day;
+      output_data.assignments[assignment_idx].shift_idx = shift;
+
+      assignment_idx++;
     }
   }
 

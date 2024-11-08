@@ -68,6 +68,7 @@ static bool write_human_readable_csv(const char *output_dir,
 
   for (int i = 0; i < output->num_assignments; i++) {
     const ShiftAssignment *assignment = &sorted_assignments[i];
+    printf("department_idx: %d\n", assignment->department_idx);
     fprintf(file, "%s,%s,%s,%s,%s\n", assignment->employee_name,
             data->metadata.employee_type_names[assignment->employee_type_idx],
             data->metadata.department_names[assignment->department_idx],
@@ -83,6 +84,7 @@ static bool write_human_readable_csv(const char *output_dir,
 
 bool export_csv(const char *output_dir, const OutputData output,
                 const InputData *data) {
+
   if (!output.ran_successfully || !output.assignments ||
       output.num_assignments == 0) {
     return false;
