@@ -1,11 +1,8 @@
-#include "io/csv_importer.h"
+#include "in/csv_importer.h"
+#include "out/csv_exporter.h"
 
 #pragma once
 
-typedef struct {
-  uint8_t *vec;
-} StandardizedOutput;
-
 typedef struct DataProcessor {
-  StandardizedOutput *(*process)(InputData *, const char *output_dir);
+  OutputData (*process)(InputData *, const char *output_dir);
 } DataProcessor;

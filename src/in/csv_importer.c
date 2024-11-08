@@ -1,4 +1,4 @@
-#include "../../include/io/csv_importer.h"
+#include "../../include/in/csv_importer.h"
 #include <assert.h>
 #include <complex.h>
 #include <dirent.h>
@@ -61,7 +61,7 @@ MetadataStrings parse_metadata_csv(const char *input_dir,
       strings.employee_type_names[config->num_employee_types] =
           strdup(name_start);
       config->num_employee_types++;
-    } else if (strcmp(type, "num_of_employees") == 0) {
+    } else if (strcmp(type, "num_employees") == 0) {
       config->num_employees = atoi(name_start);
     }
   }
