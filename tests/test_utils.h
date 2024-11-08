@@ -18,6 +18,6 @@
 
 #define TEST_START(name) printf("Running test: %s...\n", name)
 
-#define TEST_END() printf("  ✓ Passed\n")
+#define TEST_END(num) printf("Passed %d tests\n", num)
 
 #endif // TEST_UTILS_H
