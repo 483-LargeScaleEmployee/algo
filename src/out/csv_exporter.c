@@ -6,12 +6,21 @@
 static int compare_assignments(const void *a, const void *b) {
   const ShiftAssignment *aa = (const ShiftAssignment *)a;
   const ShiftAssignment *bb = (const ShiftAssignment *)b;
-
-  if (aa->sprint_day_idx != bb->sprint_day_idx)
+  // First compare by employee name
+  int name_cmp = strcmp(aa->employee_name, bb->employee_name);
+  if (name_cmp != 0) {
+    return name_cmp;
+  }
+  // Then compare by department index
+  if (aa->department_idx != bb->department_idx) {
+    return aa->department_idx - bb->department_idx;
+  }
+  // If name and department are the same, compare by sprint day
+  if (aa->sprint_day_idx != bb->sprint_day_idx) {
     return aa->sprint_day_idx - bb->sprint_day_idx;
-  if (aa->shift_idx != bb->shift_idx)
-    return aa->shift_idx - bb->shift_idx;
-  return strcmp(aa->employee_name, bb->employee_name);
+  }
+  // Finally, compare by shift index
+  return aa->shift_idx - bb->shift_idx;
 }
 
 static bool write_machine_readable_csv(const char *output_dir,
