@@ -1,5 +1,5 @@
-#include "../include/math/glp_utils.h"
-#include "test_utils.h"
+#include "../../include/math/glp_utils.h"
+#include "../test_utils.h"
 
 // Helper function to create a standard test configuration
 static FiveDimensionConfig create_test_config(void) {

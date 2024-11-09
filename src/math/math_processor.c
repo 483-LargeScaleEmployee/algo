@@ -16,8 +16,11 @@ OutputData main_solve(const InputData *data, const char *output_dir) {
   int cur_row = 1;
   set_employee_preferences(lp, &data->employee_vec, &data->config);
   add_availability_constraint(lp, &data->employee_vec, &data->config, &cur_row);
-  // add_department_needs_constraint(lp, &data->department_vec, &data->config,
-  //                                 data, &cur_row);
+  add_schrodingers_cat_constraint(lp, &data->config, &cur_row);
+  add_consecutive_shifts_constraint(lp, &data->employee_vec, &data->config,
+                                    &cur_row);
+  add_department_needs_constraint(lp, &data->department_vec, &data->config,
+                                  data, &cur_row);
 
   printf("Problem size:\n");
   printf("Rows (constraints): %d\n", glp_get_num_rows(lp));
