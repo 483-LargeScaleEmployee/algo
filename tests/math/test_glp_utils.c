@@ -67,7 +67,7 @@ static void test_vec_index_reverse(void) {
       for (int day_idx = 0; day_idx < config.num_sprint_days; day_idx++) {
         for (int s = 0; s < config.num_shifts; s++) {
           int idx = glp_schedule_vec_index(&config, d, e, day_idx, s);
-          glp_schedule_vec_index_reverse(&config, idx, &emp, &dep, &day,
+          glp_schedule_vec_index_reverse(&config, idx, &dep, &emp, &day,
                                          &shift);
 
           TEST_EQUALS(d, dep, "Department should match after roundtrip");
@@ -89,7 +89,7 @@ static void test_vec_index_reverse(void) {
   // Test last position
   int last_idx = config.num_departments * config.num_employees *
                  config.num_sprint_days * config.num_shifts;
-  glp_schedule_vec_index_reverse(&config, last_idx, &emp, &dep, &day, &shift);
+  glp_schedule_vec_index_reverse(&config, last_idx, &dep, &emp, &day, &shift);
   TEST_EQUALS(config.num_departments - 1, dep,
               "Last position department should be max");
   TEST_EQUALS(config.num_employees - 1, emp,
