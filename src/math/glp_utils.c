@@ -16,8 +16,9 @@ int glp_schedule_vec_index(const FiveDimensionConfig *config, int dep, int emp,
 
 // Takes a GLPK index and returns emp, day, shift components
 // This is necessary for reading the solution from GLPK
-void glp_schedule_vec_index_reverse(const FiveDimensionConfig *config, int glp_idx,
-                                    int *emp, int *dep, int *day, int *shift) {
+void glp_schedule_vec_index_reverse(const FiveDimensionConfig *config,
+                                    int glp_idx, int *dep, int *emp, int *day,
+                                    int *shift) {
   // Subtract 1 to handle GLPK 1-based indexing
   glp_idx--;
 
