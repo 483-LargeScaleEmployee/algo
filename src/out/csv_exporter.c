@@ -43,14 +43,14 @@ static void write_csv_line(FILE* file,
         fprintf(file, "%d%s", shifts[i], (i < count - 1) ? " " : "");
     }
     
-    fprintf(file, ")\n");
+    fprintf(file, ")\n");  // End the line correctly
 }
 
 static bool write_schedule_csv(const char *output_dir,
                              const OutputData *output,
                              const InputData *data,
                              bool is_human_readable) {
-    // Prepare filepath
+    // Prepare the filepath
     char filepath[512];
     snprintf(filepath, sizeof(filepath), "%s/%s", output_dir,
              is_human_readable ? "schedule_human.csv" : "schedule_machine.csv");
@@ -61,7 +61,7 @@ static bool write_schedule_csv(const char *output_dir,
     // Write header
     fprintf(file, "%s,%s,%s,sprint_days,shifts\n",
             is_human_readable ? "Employee" : "employee_name",
-            data->metadata.employee_type_names[0],
+            "Title",
             is_human_readable ? "Department" : "department_name");
     
     // Sort assignments
@@ -80,12 +80,19 @@ static bool write_schedule_csv(const char *output_dir,
     for (int i = 0; i < output->num_assignments; i++) {
         const ShiftAssignment* curr = &sorted[i];
         
-        // If we're still on the same employee and department
+        // If still on the same employee and department
         if (strcmp(current_name, curr->employee_name) == 0 && 
             current_dept == curr->department_idx) {
-            current_days[count] = curr->sprint_day_idx + 1;  // Make 1-indexed
-            current_shifts[count] = curr->shift_idx;
-            count++;
+            if (curr->sprint_day_idx >= 0) {  // Validate indices
+                current_days[count] = curr->sprint_day_idx + 1;  // Make 1-indexed
+                current_shifts[count] = curr->shift_idx;
+                count++;
+            } else {
+                fprintf(stderr, "Error: Negative sprint_day_idx detected for employee %s\n", curr->employee_name);
+                free(sorted);
+                fclose(file);
+                return false;
+            }
         } else {
             // Write the previous group
             write_csv_line(file, 
@@ -99,7 +106,7 @@ static bool write_schedule_csv(const char *output_dir,
             // Start new group
             current_name = curr->employee_name;
             current_dept = curr->department_idx;
-            current_days[0] = curr->sprint_day_idx + 1;  // Make 1-indexed
+            current_days[0] = curr->sprint_day_idx + 1;
             current_shifts[0] = curr->shift_idx;
             count = 1;
         }
