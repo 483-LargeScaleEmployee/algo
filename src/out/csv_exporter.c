@@ -19,7 +19,7 @@ static int compare_assignments(const void *a, const void *b) {
     int name_cmp = strcmp(aa->employee_name, bb->employee_name);
     if (name_cmp != 0) return name_cmp;
     if (aa->department_idx != bb->department_idx) return aa->department_idx - bb->department_idx;
-    return aa->sprint_day_idx - bb->sprint_day_idx;
+    return aa->sprint_day_idx + bb->sprint_day_idx;
 }
 
 static GroupedAssignment create_grouped_assignment(const ShiftAssignment* first) {
@@ -35,91 +35,11 @@ static GroupedAssignment create_grouped_assignment(const ShiftAssignment* first)
     return group;
 }
 
-
-static void free_grouped_assignment(GroupedAssignment* group) {
-    free(group->employee_name);
-    free(group->sprint_days);
-    free(group->shifts);
-}
-
-static void write_csv_row(FILE* file, const GroupedAssignment* group, const InputData* data) {
-    // Validate inputs
-    if (!group || !data || !file) {
-        fprintf(stderr, "Error: Invalid input to write_csv_row\n");
-        return;
-    }
-
-    fprintf(file, "%s,%s,%s,", 
-            group->employee_name,
-            data->metadata.employee_type_names[group->employee_type_idx],
-            data->metadata.department_names[group->department_idx]);
-    
-    // Write days
-    if (group->num_entries == 1) {
-        // Handle single entry case
-        if (group->sprint_days[0] < 0 || group->shifts[0] < 0) {
-            fprintf(stderr, "Warning: Invalid day (%d) or shift (%d)\n", 
-                    group->sprint_days[0], group->shifts[0]);
-            fprintf(file, "(0),(0)");  // Use default values for invalid data
-        } else {
-            fprintf(file, "(%d),", group->sprint_days[0]);
-            fprintf(file, "(%d)", group->shifts[0]);
-        }
-    } else {
-        // Write days tuple with commas
-        fprintf(file, "(");
-        for (int i = 0; i < group->num_entries; i++) {
-            if (group->sprint_days[i] < 0) {
-                fprintf(stderr, "Warning: Invalid day value: %d\n", group->sprint_days[i]);
-                fprintf(file, "0");  // Use default value for invalid data
-            } else {
-                fprintf(file, "%d", group->sprint_days[i]);
-            }
-            if (i < group->num_entries - 1) {
-                fprintf(file, ",");  // Use comma instead of space
-            }
-        }
-        fprintf(file, "),");
-        
-        // Write shifts tuple with commas
-        fprintf(file, "(");
-        for (int i = 0; i < group->num_entries; i++) {
-            if (group->shifts[i] < 0) {
-                fprintf(stderr, "Warning: Invalid shift value: %d\n", group->shifts[i]);
-                fprintf(file, "0");  // Use default value for invalid data
-            } else {
-                fprintf(file, "%d", group->shifts[i]);
-            }
-            if (i < group->num_entries - 1) {
-                fprintf(file, ",");  // Use comma instead of space
-            }
-        }
-        fprintf(file, ")");
-    }
-    fprintf(file, "\n");
-}
-
 static void add_to_group(GroupedAssignment* group, int day, int shift) {
-    // Validate inputs
-    if (!group) {
-        fprintf(stderr, "Error: Invalid group pointer\n");
-        return;
-    }
-    
-    if (day < 0 || shift < 0) {
-        fprintf(stderr, "Warning: Invalid day (%d) or shift (%d)\n", day, shift);
-        return;
-    }
-    
     if (group->num_entries >= group->capacity) {
         group->capacity *= 2;
         group->sprint_days = realloc(group->sprint_days, group->capacity * sizeof(int));
         group->shifts = realloc(group->shifts, group->capacity * sizeof(int));
-        
-        if (!group->sprint_days || !group->shifts) {
-            fprintf(stderr, "Error: Memory allocation failed\n");
-            return;
-        }
     }
     
     // Insert in sorted order
@@ -138,6 +58,44 @@ static void add_to_group(GroupedAssignment* group, int day, int shift) {
     group->sprint_days[insert_pos] = day;
     group->shifts[insert_pos] = shift;
     group->num_entries++;
+}
+
+static void free_grouped_assignment(GroupedAssignment* group) {
+    free(group->employee_name);
+    free(group->sprint_days);
+    free(group->shifts);
+}
+
+static void write_csv_row(FILE* file, const GroupedAssignment* group, const InputData* data) {
+    fprintf(file, "%s,%s,%s,", 
+            group->employee_name,
+            data->metadata.employee_type_names[group->employee_type_idx],
+            data->metadata.department_names[group->department_idx]);
+    
+    // Write days
+    if (group->num_entries == 1) {
+        fprintf(file, "(%d),", group->sprint_days[0]);
+        fprintf(file, "(%d)", group->shifts[0]);
+    } else {
+        // Write days tuple
+        fprintf(file, "(");
+        for (int i = 0; i < group->num_entries; i++) {
+            fprintf(file, "%d%s", 
+                    group->sprint_days[i],
+                    (i < group->num_entries - 1) ? " " : "");
+        }
+        fprintf(file, "),");
+        
+        // Write shifts tuple
+        fprintf(file, "(");
+        for (int i = 0; i < group->num_entries; i++) {
+            fprintf(file, "%d%s", 
+                    group->shifts[i],
+                    (i < group->num_entries - 1) ? " " : "");
+        }
+        fprintf(file, ")");
+    }
+    fprintf(file, "\n");
 }
 
 static bool process_assignments(FILE* file, const OutputData* output, const InputData* data) {
