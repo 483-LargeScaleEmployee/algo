@@ -10,120 +10,170 @@ typedef struct {
     int* sprint_days;
     int* shifts;
     int num_entries;
+    int capacity;
 } GroupedAssignment;
 
 static int compare_assignments(const void *a, const void *b) {
     const ShiftAssignment *aa = (const ShiftAssignment *)a;
     const ShiftAssignment *bb = (const ShiftAssignment *)b;
-    
     int name_cmp = strcmp(aa->employee_name, bb->employee_name);
     if (name_cmp != 0) return name_cmp;
-    
-    return aa->department_idx - bb->department_idx;
+    if (aa->department_idx != bb->department_idx) return aa->department_idx - bb->department_idx;
+    return aa->sprint_day_idx - bb->sprint_day_idx;
 }
 
-static void write_csv_line(FILE* file, 
-                          const char* name, 
-                          const char* type, 
-                          const char* dept,
-                          const int* days,
-                          const int* shifts,
-                          int count) {
-    fprintf(file, "%s,%s,%s,(", name, type, dept);
+static GroupedAssignment create_grouped_assignment(const ShiftAssignment* first) {
+    GroupedAssignment group = {
+        .employee_name = strdup(first->employee_name),
+        .employee_type_idx = first->employee_type_idx,
+        .department_idx = first->department_idx,
+        .sprint_days = malloc(20 * sizeof(int)),
+        .shifts = malloc(20 * sizeof(int)),
+        .num_entries = 0,
+        .capacity = 20
+    };
+    return group;
+}
+
+static void add_to_group(GroupedAssignment* group, int day, int shift) {
+    if (group->num_entries >= group->capacity) {
+        group->capacity *= 2;
+        group->sprint_days = realloc(group->sprint_days, group->capacity * sizeof(int));
+        group->shifts = realloc(group->shifts, group->capacity * sizeof(int));
+    }
+    
+    // Insert in sorted order
+    int insert_pos = 0;
+    while (insert_pos < group->num_entries && group->sprint_days[insert_pos] < day) {
+        insert_pos++;
+    }
+    
+    // Shift existing elements
+    for (int i = group->num_entries; i > insert_pos; i--) {
+        group->sprint_days[i] = group->sprint_days[i-1];
+        group->shifts[i] = group->shifts[i-1];
+    }
+    
+    // Insert new elements
+    group->sprint_days[insert_pos] = day;
+    group->shifts[insert_pos] = shift;
+    group->num_entries++;
+}
+
+static void free_grouped_assignment(GroupedAssignment* group) {
+    free(group->employee_name);
+    free(group->sprint_days);
+    free(group->shifts);
+}
+
+static void write_csv_row(FILE* file, const GroupedAssignment* group, const InputData* data) {
+    fprintf(file, "%s,%s,%s,", 
+            group->employee_name,
+            data->metadata.employee_type_names[group->employee_type_idx],
+            data->metadata.department_names[group->department_idx]);
     
     // Write days
-    for (int i = 0; i < count; i++) {
-        fprintf(file, "%d%s", days[i], (i < count - 1) ? " " : "");
+    if (group->num_entries == 1) {
+        fprintf(file, "(%d),", group->sprint_days[0] * -1);
+        fprintf(file, "(%d)", group->shifts[0]);
+    } else {
+        // Write days tuple
+        fprintf(file, "(");
+        for (int i = 0; i < group->num_entries; i++) {
+            fprintf(file, "%d%s", 
+                    group->sprint_days[i],
+                    (i < group->num_entries - 1) ? " " : "");
+        }
+        fprintf(file, "),");
+        
+        // Write shifts tuple
+        fprintf(file, "(");
+        for (int i = 0; i < group->num_entries; i++) {
+            fprintf(file, "%d%s", 
+                    group->shifts[i],
+                    (i < group->num_entries - 1) ? " " : "");
+        }
+        fprintf(file, ")");
     }
-    
-    fprintf(file, "),(");
-    
-    // Write shifts
-    for (int i = 0; i < count; i++) {
-        fprintf(file, "%d%s", shifts[i], (i < count - 1) ? " " : "");
-    }
-    
-    fprintf(file, ")\n");  // End the line correctly
+    fprintf(file, "\n");
 }
 
-static bool write_schedule_csv(const char *output_dir,
-                             const OutputData *output,
-                             const InputData *data,
-                             bool is_human_readable) {
-    // Prepare the filepath
-    char filepath[512];
-    snprintf(filepath, sizeof(filepath), "%s/%s", output_dir,
-             is_human_readable ? "schedule_human.csv" : "schedule_machine.csv");
-    
-    FILE *file = fopen(filepath, "w");
-    if (!file) return false;
-    
-    // Write header
-    fprintf(file, "%s,%s,%s,sprint_days,shifts\n",
-            is_human_readable ? "Employee" : "employee_name",
-            "Title",
-            is_human_readable ? "Department" : "department_name");
-    
+static bool process_assignments(FILE* file, const OutputData* output, const InputData* data) {
     // Sort assignments
-    ShiftAssignment* sorted = malloc(output->num_assignments * sizeof(ShiftAssignment));
-    memcpy(sorted, output->assignments, output->num_assignments * sizeof(ShiftAssignment));
-    qsort(sorted, output->num_assignments, sizeof(ShiftAssignment), compare_assignments);
-    
-    // Process assignments
-    int current_days[50];  // Temporary arrays for grouping
-    int current_shifts[50];
-    int count = 0;
-    
-    const char* current_name = sorted[0].employee_name;
-    int current_dept = sorted[0].department_idx;
-    
-    for (int i = 0; i < output->num_assignments; i++) {
-        const ShiftAssignment* curr = &sorted[i];
-        
-        // If still on the same employee and department
-        if (strcmp(current_name, curr->employee_name) == 0 && 
-            current_dept == curr->department_idx) {
-            if (curr->sprint_day_idx >= 0) {  // Validate indices
-                current_days[count] = curr->sprint_day_idx + 1;  // Make 1-indexed
-                current_shifts[count] = curr->shift_idx;
-                count++;
-            } else {
-                fprintf(stderr, "Error: Negative sprint_day_idx detected for employee %s\n", curr->employee_name);
-                free(sorted);
-                fclose(file);
-                return false;
-            }
+    ShiftAssignment* sorted_assignments = malloc(output->num_assignments * sizeof(ShiftAssignment));
+    memcpy(sorted_assignments, output->assignments, output->num_assignments * sizeof(ShiftAssignment));
+    qsort(sorted_assignments, output->num_assignments, sizeof(ShiftAssignment), compare_assignments);
+
+    GroupedAssignment* groups = malloc(output->num_assignments * sizeof(GroupedAssignment));
+    int num_groups = 0;
+
+    const ShiftAssignment* curr = &sorted_assignments[0];
+    groups[0] = create_grouped_assignment(curr);
+    add_to_group(&groups[0], curr->sprint_day_idx + 1, curr->shift_idx); // Add 1 to make 1-indexed
+    num_groups = 1;
+
+    // Process remaining assignments
+    for (int i = 1; i < output->num_assignments; i++) {
+        curr = &sorted_assignments[i];
+        if (strcmp(groups[num_groups-1].employee_name, curr->employee_name) == 0 &&
+            groups[num_groups-1].department_idx == curr->department_idx) {
+            // Add to existing group
+            add_to_group(&groups[num_groups-1], curr->sprint_day_idx + 1, curr->shift_idx); // Add 1 to make 1-indexed
         } else {
-            // Write the previous group
-            write_csv_line(file, 
-                          current_name,
-                          data->metadata.employee_type_names[sorted[i-1].employee_type_idx],
-                          data->metadata.department_names[current_dept],
-                          current_days,
-                          current_shifts,
-                          count);
-            
+            // Write previous group
+            write_csv_row(file, &groups[num_groups-1], data);
             // Start new group
-            current_name = curr->employee_name;
-            current_dept = curr->department_idx;
-            current_days[0] = curr->sprint_day_idx + 1;
-            current_shifts[0] = curr->shift_idx;
-            count = 1;
+            groups[num_groups] = create_grouped_assignment(curr);
+            add_to_group(&groups[num_groups], curr->sprint_day_idx + 1, curr->shift_idx); // Add 1 to make 1-indexed
+            num_groups++;
         }
     }
+
+    // Write last group
+    if (num_groups > 0) {
+        write_csv_row(file, &groups[num_groups-1], data);
+    }
+
+    // Cleanup
+    for (int i = 0; i < num_groups; i++) {
+        free_grouped_assignment(&groups[i]);
+    }
+    free(groups);
+    free(sorted_assignments);
     
-    // Write the last group
-    write_csv_line(file, 
-                   current_name,
-                   data->metadata.employee_type_names[sorted[output->num_assignments-1].employee_type_idx],
-                   data->metadata.department_names[current_dept],
-                   current_days,
-                   current_shifts,
-                   count);
-    
-    free(sorted);
-    fclose(file);
     return true;
+}
+
+static bool write_machine_readable_csv(const char *output_dir,
+                                     const OutputData *output,
+                                     const InputData *data) {
+    char filepath[512];
+    snprintf(filepath, sizeof(filepath), "%s/schedule_machine.csv", output_dir);
+    FILE *file = fopen(filepath, "w");
+    if (!file) return false;
+
+    fprintf(file, "employee_name,%s,department_name,sprint_days,shifts\n",
+            data->metadata.employee_type_names[0]);
+
+    bool success = process_assignments(file, output, data);
+    fclose(file);
+    return success;
+}
+
+static bool write_human_readable_csv(const char *output_dir,
+                                   const OutputData *output,
+                                   const InputData *data) {
+    char filepath[512];
+    snprintf(filepath, sizeof(filepath), "%s/schedule_human.csv", output_dir);
+    FILE *file = fopen(filepath, "w");
+    if (!file) return false;
+
+    fprintf(file, "Employee,%s,Department,Days,Shifts\n",
+            data->metadata.employee_type_names[0]);
+
+    bool success = process_assignments(file, output, data);
+    fclose(file);
+    return success;
 }
 
 bool export_csv(const char *output_dir, const OutputData output,
@@ -132,13 +182,12 @@ bool export_csv(const char *output_dir, const OutputData output,
         output.num_assignments == 0) {
         return false;
     }
-    
-    // Write both formats
-    bool machine_success = write_schedule_csv(output_dir, &output, data, false);
+
+    bool machine_success = write_machine_readable_csv(output_dir, &output, data);
     if (!machine_success) return false;
-    
-    bool human_success = write_schedule_csv(output_dir, &output, data, true);
+
+    bool human_success = write_human_readable_csv(output_dir, &output, data);
     if (!human_success) return false;
-    
+
     return true;
 }
