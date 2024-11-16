@@ -82,16 +82,16 @@ static void write_csv_row(FILE* file, const GroupedAssignment* group, const Inpu
         for (int i = 0; i < group->num_entries; i++) {
             fprintf(file, "%d%s", 
                     group->sprint_days[i],
-                    (i < group->num_entries - 1) ? "," : "");
+                    (i < group->num_entries - 1) ? " " : "");
         }
-        fprintf(file, ")");
+        fprintf(file, "),");
         
         // Write shifts tuple
         fprintf(file, "(");
         for (int i = 0; i < group->num_entries; i++) {
             fprintf(file, "%d%s", 
                     group->shifts[i],
-                    (i < group->num_entries - 1) ? "," : "");
+                    (i < group->num_entries - 1) ? " " : "");
         }
         fprintf(file, ")");
     }
