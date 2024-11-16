@@ -1,608 +1,428 @@
-Employee,Type,Department,Day,Shift
-Alexander Brown,Doctor,Emergency,Next Wednesday,Night
-Alexander Brown,Doctor,Surgery,Next Friday,Morning
-Alexander Martin,Nurse,Cardiology,Next Saturday,Morning
-Alexander Martin,Nurse,Emergency,Monday,Morning
-Alexander Martin,Nurse,Emergency,Sunday,Night
-Alexander Martin,Nurse,Emergency,Next Sunday,Morning
-Alexander Martin,Nurse,Surgery,Tuesday,Evening
-Alexander Martin,Nurse,Dermatology,Wednesday,Evening
-Alexander Martin,Nurse,Dermatology,Next Tuesday,Morning
-Alexander Martin,Nurse,Dermatology,Next Friday,Night
-Alexander Martin,Nurse,Neurology,Friday,Evening
-Alexander Martin,Nurse,Psychiatry,Saturday,Night
-Alexander Martin,Nurse,Psychiatry,Next Monday,Evening
-Alexander Martin,Nurse,Gynecology,Thursday,Night
-Alexander Martin,Nurse,Gynecology,Next Thursday,Evening
-Alexander Perez,Doctor,Cardiology,Friday,Night
-Alexander Perez,Doctor,Pediatrics,Tuesday,Morning
-Alexander Perez,Doctor,Surgery,Next Sunday,Evening
-Alexander Perez,Doctor,Immunology,Next Friday,Morning
-Alexander Perez,Doctor,Dermatology,Next Wednesday,Night
-Alexander Perez,Doctor,Neurology,Saturday,Morning
-Alexander Perez,Doctor,Psychiatry,Next Monday,Morning
-Alexander Perez,Doctor,Psychiatry,Next Saturday,Evening
-Alexander Robinson,Doctor,Cardiology,Thursday,Morning
-Alexander Robinson,Doctor,Cardiology,Friday,Evening
-Alexander Robinson,Doctor,Cardiology,Sunday,Morning
-Alexander Robinson,Doctor,Pediatrics,Tuesday,Night
-Alexander Robinson,Doctor,Pediatrics,Next Thursday,Morning
-Alexander Robinson,Doctor,Pediatrics,Next Sunday,Evening
-Alexander Robinson,Doctor,Emergency,Next Saturday,Morning
-Alexander Robinson,Doctor,Surgery,Next Monday,Evening
-Alexander Robinson,Doctor,Immunology,Next Tuesday,Night
-Amelia Gonzalez,Admin,Pediatrics,Next Saturday,Morning
-Amelia Gonzalez,Admin,Emergency,Saturday,Evening
-Amelia Gonzalez,Admin,Surgery,Thursday,Evening
-Amelia Gonzalez,Admin,Surgery,Next Sunday,Night
-Amelia Gonzalez,Admin,Dermatology,Wednesday,Night
-Amelia Gonzalez,Admin,Neurology,Tuesday,Evening
-Amelia Gonzalez,Admin,Neurology,Next Monday,Night
-Amelia Gonzalez,Admin,Neurology,Next Friday,Night
-Amelia Gonzalez,Admin,Gynecology,Friday,Evening
-Amelia Gonzalez,Admin,Urology,Next Thursday,Evening
-Amelia Lewis,Doctor,Neurology,Next Saturday,Evening
-Amelia White,Nurse,Cardiology,Monday,Morning
-Amelia White,Nurse,Cardiology,Friday,Morning
-Amelia White,Nurse,Cardiology,Next Monday,Evening
-Amelia White,Nurse,Cardiology,Next Thursday,Morning
-Amelia White,Nurse,Cardiology,Next Saturday,Night
-Amelia White,Nurse,Cardiology,Next Sunday,Morning
-Amelia White,Nurse,Pediatrics,Thursday,Evening
-Amelia White,Nurse,Surgery,Sunday,Evening
-Amelia White,Nurse,Dermatology,Saturday,Night
-Amelia White,Nurse,Psychiatry,Next Friday,Evening
-Ava Allen,Nurse,Dermatology,Sunday,Morning
-Ava Martinez,Doctor,Pediatrics,Wednesday,Morning
-Ava Martinez,Doctor,Emergency,Thursday,Morning
-Ava Miller,Doctor,Cardiology,Next Thursday,Evening
-Ava Miller,Doctor,Pediatrics,Wednesday,Night
-Ava Miller,Doctor,Emergency,Next Friday,Night
-Ava Miller,Doctor,Immunology,Next Saturday,Night
-Ava Miller,Doctor,Dermatology,Next Tuesday,Morning
-Ava Miller,Doctor,Neurology,Friday,Morning
-Barbara Davis,Admin,Pediatrics,Next Friday,Night
-Barbara Davis,Admin,Neurology,Sunday,Morning
-Barbara Gonzalez,Admin,Neurology,Next Tuesday,Evening
-Barbara Gonzalez,Admin,Gynecology,Next Wednesday,Morning
-Barbara Gonzalez,Admin,Urology,Next Friday,Night
-Barbara Thompson,Nurse,Immunology,Next Monday,Morning
-Benjamin Brown,Admin,Emergency,Tuesday,Evening
-Benjamin Brown,Admin,Emergency,Wednesday,Night
-Benjamin Brown,Admin,Dermatology,Saturday,Night
-Benjamin Brown,Admin,Psychiatry,Friday,Morning
-Benjamin Brown,Admin,Psychiatry,Next Thursday,Night
-Benjamin Hill,Doctor,Dermatology,Next Tuesday,Night
-Benjamin Hill,Doctor,Dermatology,Next Thursday,Night
-Benjamin Hill,Doctor,Psychiatry,Next Sunday,Night
-Benjamin Hill,Doctor,Gynecology,Saturday,Morning
-Benjamin Hill,Doctor,Gynecology,Next Monday,Morning
-Benjamin Hill,Doctor,Urology,Monday,Evening
-Benjamin Hill,Doctor,Urology,Tuesday,Night
-Benjamin Hill,Doctor,Urology,Wednesday,Night
-Benjamin Hill,Doctor,Urology,Thursday,Evening
-Benjamin Hill,Doctor,Urology,Sunday,Night
-Benjamin Hill,Doctor,Urology,Next Wednesday,Night
-Benjamin Hill,Doctor,Urology,Next Friday,Evening
-Benjamin Lewis,Doctor,Neurology,Thursday,Morning
-Benjamin Thompson,Nurse,Neurology,Next Saturday,Evening
-Charles Allen,Nurse,Pediatrics,Wednesday,Evening
-Charles Allen,Nurse,Pediatrics,Next Friday,Evening
-Charles Allen,Nurse,Surgery,Tuesday,Night
-Charles Allen,Nurse,Surgery,Thursday,Evening
-Charles Allen,Nurse,Surgery,Next Wednesday,Morning
-Charles Allen,Nurse,Immunology,Next Thursday,Night
-Charles Allen,Nurse,Dermatology,Friday,Morning
-Charles Allen,Nurse,Neurology,Monday,Night
-Charles Allen,Nurse,Neurology,Next Sunday,Morning
-Charles Gonzalez,Doctor,Pediatrics,Next Tuesday,Morning
-Charles Gonzalez,Doctor,Emergency,Saturday,Morning
-Charles Gonzalez,Doctor,Surgery,Next Saturday,Night
-Charles Gonzalez,Doctor,Neurology,Next Monday,Morning
-Charles Gonzalez,Doctor,Neurology,Next Friday,Morning
-Charles Martin,Doctor,Gynecology,Next Friday,Night
-Charles Miller,Nurse,Dermatology,Next Saturday,Evening
-Charlotte Anderson,Doctor,Psychiatry,Thursday,Night
-Charlotte Anderson,Doctor,Urology,Monday,Morning
-Charlotte Anderson,Doctor,Urology,Friday,Morning
-Charlotte Clark,Admin,Dermatology,Thursday,Evening
-Charlotte Flores,Admin,Dermatology,Next Thursday,Evening
-Charlotte Flores,Admin,Gynecology,Wednesday,Night
-Charlotte Flores,Admin,Urology,Thursday,Night
-Charlotte Sanchez,Doctor,Cardiology,Next Wednesday,Morning
-Charlotte Sanchez,Doctor,Pediatrics,Sunday,Morning
-Charlotte Sanchez,Doctor,Surgery,Monday,Night
-Charlotte Sanchez,Doctor,Surgery,Thursday,Morning
-Charlotte Sanchez,Doctor,Immunology,Next Thursday,Evening
-Charlotte Sanchez,Doctor,Psychiatry,Friday,Morning
-Charlotte Torres,Nurse,Dermatology,Next Wednesday,Night
-Charlotte Torres,Nurse,Psychiatry,Monday,Morning
-Charlotte Torres,Nurse,Psychiatry,Next Monday,Night
-Charlotte Torres,Nurse,Gynecology,Thursday,Evening
-Charlotte Torres,Nurse,Gynecology,Next Saturday,Morning
-Charlotte Torres,Nurse,Urology,Sunday,Morning
-Charlotte Torres,Nurse,Urology,Next Tuesday,Morning
-Charlotte Wilson,Admin,Gynecology,Thursday,Evening
-David Martinez,Admin,Neurology,Thursday,Evening
-David Miller,Nurse,Pediatrics,Sunday,Night
-David Miller,Nurse,Emergency,Wednesday,Evening
-David Miller,Nurse,Emergency,Next Monday,Morning
-David Miller,Nurse,Emergency,Next Tuesday,Night
-David Miller,Nurse,Surgery,Next Sunday,Night
-David Miller,Nurse,Immunology,Saturday,Evening
-David Miller,Nurse,Dermatology,Friday,Evening
-David Miller,Nurse,Dermatology,Next Wednesday,Morning
-David Miller,Nurse,Dermatology,Next Saturday,Morning
-David Miller,Nurse,Neurology,Thursday,Morning
-David Miller,Nurse,Gynecology,Next Thursday,Morning
-David Miller,Nurse,Urology,Next Friday,Morning
-David Smith,Admin,Pediatrics,Next Monday,Morning
-David Smith,Admin,Surgery,Next Tuesday,Night
-David Smith,Admin,Surgery,Next Saturday,Evening
-David Smith,Admin,Neurology,Friday,Evening
-Dorothy Garcia,Nurse,Cardiology,Tuesday,Morning
-Dorothy Garcia,Nurse,Cardiology,Next Friday,Evening
-Dorothy Garcia,Nurse,Emergency,Next Saturday,Morning
-Dorothy Garcia,Nurse,Emergency,Next Sunday,Night
-Dorothy Garcia,Nurse,Surgery,Monday,Night
-Dorothy Garcia,Nurse,Surgery,Thursday,Morning
-Dorothy Garcia,Nurse,Surgery,Friday,Morning
-Dorothy Garcia,Nurse,Surgery,Next Thursday,Night
-Dorothy Garcia,Nurse,Immunology,Next Tuesday,Morning
-Dorothy Garcia,Nurse,Dermatology,Sunday,Evening
-Dorothy Garcia,Nurse,Dermatology,Next Monday,Evening
-Elijah Johnson,Nurse,Cardiology,Next Saturday,Evening
-Elijah Johnson,Nurse,Dermatology,Saturday,Evening
-Elijah Johnson,Nurse,Gynecology,Tuesday,Evening
-Elijah Robinson,Doctor,Cardiology,Wednesday,Night
-Elijah Robinson,Doctor,Emergency,Monday,Night
-Elijah Robinson,Doctor,Immunology,Tuesday,Night
-Elijah Robinson,Doctor,Immunology,Thursday,Night
-Elijah Robinson,Doctor,Immunology,Sunday,Morning
-Elijah Robinson,Doctor,Immunology,Next Thursday,Morning
-Elijah Robinson,Doctor,Psychiatry,Next Wednesday,Morning
-Elijah Wilson,Nurse,Pediatrics,Friday,Night
-Elijah Wilson,Nurse,Pediatrics,Next Tuesday,Night
-Elijah Wilson,Nurse,Pediatrics,Next Wednesday,Night
-Elijah Wilson,Nurse,Pediatrics,Next Saturday,Morning
-Elijah Wilson,Nurse,Emergency,Wednesday,Night
-Elijah Wilson,Nurse,Emergency,Thursday,Evening
-Elijah Wilson,Nurse,Emergency,Next Monday,Evening
-Elijah Wilson,Nurse,Surgery,Next Thursday,Morning
-Elijah Wilson,Nurse,Immunology,Sunday,Night
-Elijah Wilson,Nurse,Dermatology,Next Sunday,Morning
-Elijah Wilson,Nurse,Neurology,Saturday,Morning
-Elijah Wilson,Nurse,Psychiatry,Next Friday,Morning
-Elizabeth Brown,Doctor,Cardiology,Next Friday,Morning
-Elizabeth Brown,Doctor,Emergency,Next Thursday,Evening
-Elizabeth Brown,Doctor,Surgery,Next Sunday,Morning
-Elizabeth Hill,Admin,Emergency,Next Tuesday,Night
-Elizabeth Hill,Admin,Surgery,Friday,Morning
-Elizabeth Hill,Admin,Immunology,Monday,Night
-Elizabeth Hill,Admin,Neurology,Wednesday,Evening
-Elizabeth Hill,Admin,Neurology,Next Saturday,Morning
-Elizabeth Hill,Admin,Urology,Next Monday,Night
-Elizabeth Hill,Admin,Urology,Next Wednesday,Night
-Elizabeth Sanchez,Nurse,Psychiatry,Tuesday,Evening
-Elizabeth Young,Admin,Surgery,Wednesday,Morning
-Elizabeth Young,Admin,Immunology,Next Monday,Morning
-Emma Lee,Nurse,Dermatology,Next Sunday,Night
-Emma Ramirez,Doctor,Psychiatry,Tuesday,Evening
-Emma Sanchez,Admin,Emergency,Thursday,Evening
-Emma Williams,Admin,Neurology,Next Monday,Morning
-Emma Williams,Admin,Neurology,Next Wednesday,Evening
-Evelyn Hill,Nurse,Pediatrics,Tuesday,Morning
-Evelyn Hill,Nurse,Pediatrics,Next Friday,Morning
-Evelyn Hill,Nurse,Pediatrics,Next Sunday,Night
-Evelyn Hill,Nurse,Emergency,Sunday,Morning
-Evelyn Hill,Nurse,Immunology,Friday,Night
-Evelyn Hill,Nurse,Immunology,Next Tuesday,Night
-Evelyn Hill,Nurse,Dermatology,Next Thursday,Evening
-Evelyn Hill,Nurse,Psychiatry,Next Wednesday,Morning
-Evelyn Hill,Nurse,Psychiatry,Next Saturday,Morning
-Evelyn Hill,Nurse,Gynecology,Monday,Evening
-Evelyn Hill,Nurse,Urology,Thursday,Morning
-Evelyn Jackson,Doctor,Surgery,Wednesday,Night
-Evelyn Jackson,Doctor,Immunology,Tuesday,Morning
-Evelyn Jackson,Doctor,Neurology,Thursday,Evening
-Evelyn Jackson,Doctor,Psychiatry,Saturday,Morning
-Evelyn Jackson,Doctor,Gynecology,Next Tuesday,Morning
-Evelyn Jackson,Doctor,Urology,Friday,Evening
-Evelyn Johnson,Nurse,Cardiology,Tuesday,Evening
-Evelyn Johnson,Nurse,Cardiology,Sunday,Night
-Evelyn Johnson,Nurse,Pediatrics,Next Thursday,Night
-Evelyn Johnson,Nurse,Immunology,Next Friday,Evening
-Evelyn Johnson,Nurse,Urology,Wednesday,Evening
-Evelyn Johnson,Nurse,Urology,Saturday,Night
-Evelyn Thompson,Doctor,Pediatrics,Next Friday,Night
-Evelyn Thompson,Doctor,Surgery,Wednesday,Morning
-Evelyn Thompson,Doctor,Dermatology,Friday,Morning
-Evelyn Thompson,Doctor,Neurology,Next Tuesday,Morning
-Evelyn Thompson,Doctor,Gynecology,Tuesday,Night
-Evelyn Thompson,Doctor,Gynecology,Sunday,Morning
-Evelyn Thompson,Doctor,Gynecology,Next Sunday,Evening
-Evelyn White,Admin,Cardiology,Next Wednesday,Night
-Evelyn White,Admin,Dermatology,Next Saturday,Night
-Evelyn White,Admin,Gynecology,Next Sunday,Morning
-Harper Davis,Admin,Pediatrics,Saturday,Evening
-Harper Davis,Admin,Dermatology,Thursday,Night
-Harper Davis,Admin,Dermatology,Next Monday,Night
-Harper Davis,Admin,Neurology,Monday,Evening
-Harper Davis,Admin,Psychiatry,Sunday,Night
-Harper Davis,Admin,Gynecology,Tuesday,Night
-Harper Davis,Admin,Gynecology,Next Thursday,Evening
-Harper Davis,Admin,Gynecology,Next Saturday,Morning
-Harper Gonzalez,Nurse,Urology,Thursday,Night
-Harper Gonzalez,Nurse,Urology,Next Wednesday,Evening
-Harper Williams,Nurse,Pediatrics,Monday,Morning
-Harper Williams,Nurse,Pediatrics,Saturday,Morning
-Harper Williams,Nurse,Pediatrics,Next Tuesday,Evening
-Harper Williams,Nurse,Emergency,Next Wednesday,Night
-Harper Williams,Nurse,Surgery,Friday,Night
-Harper Williams,Nurse,Surgery,Next Monday,Night
-Harper Williams,Nurse,Surgery,Next Friday,Evening
-Harper Williams,Nurse,Immunology,Tuesday,Night
-Harper Williams,Nurse,Immunology,Wednesday,Night
-Harper Williams,Nurse,Immunology,Next Thursday,Evening
-Harper Williams,Nurse,Immunology,Next Sunday,Evening
-Harper Williams,Nurse,Psychiatry,Next Saturday,Night
-Harper Williams,Nurse,Gynecology,Thursday,Morning
-Henry Allen,Admin,Dermatology,Next Thursday,Night
-Isabella Hernandez,Admin,Cardiology,Next Sunday,Morning
-Isabella Hernandez,Admin,Pediatrics,Monday,Evening
-Isabella Hernandez,Admin,Immunology,Friday,Evening
-Isabella Hernandez,Admin,Immunology,Next Tuesday,Night
-Isabella Hernandez,Admin,Immunology,Next Saturday,Morning
-Isabella Hernandez,Admin,Dermatology,Next Wednesday,Evening
-Isabella Hernandez,Admin,Psychiatry,Thursday,Night
-Isabella Nguyen,Doctor,Gynecology,Next Saturday,Morning
-Isabella Walker,Doctor,Pediatrics,Thursday,Morning
-James Clark,Doctor,Cardiology,Sunday,Night
-James Clark,Doctor,Cardiology,Next Wednesday,Night
-James Clark,Doctor,Pediatrics,Saturday,Morning
-James Clark,Doctor,Emergency,Next Friday,Evening
-James Clark,Doctor,Emergency,Next Saturday,Night
-James Clark,Doctor,Surgery,Monday,Evening
-James Clark,Doctor,Surgery,Wednesday,Evening
-James Clark,Doctor,Surgery,Next Tuesday,Morning
-James Clark,Doctor,Immunology,Thursday,Evening
-James Clark,Doctor,Immunology,Next Monday,Morning
-James Clark,Doctor,Dermatology,Tuesday,Night
-James Clark,Doctor,Dermatology,Friday,Evening
-James Clark,Doctor,Dermatology,Next Sunday,Evening
-James Hill,Doctor,Cardiology,Wednesday,Morning
-James Hill,Doctor,Psychiatry,Thursday,Morning
-James Lee,Nurse,Cardiology,Next Sunday,Evening
-James Lee,Nurse,Pediatrics,Next Friday,Night
-James Lee,Nurse,Emergency,Tuesday,Night
-James Lee,Nurse,Immunology,Next Wednesday,Evening
-James Lee,Nurse,Psychiatry,Next Tuesday,Night
-James Lee,Nurse,Psychiatry,Next Saturday,Evening
-James Lee,Nurse,Gynecology,Next Thursday,Night
-James Lee,Nurse,Urology,Wednesday,Night
-James Scott,Doctor,Emergency,Next Wednesday,Evening
-James Scott,Doctor,Surgery,Friday,Morning
-James Scott,Doctor,Dermatology,Next Sunday,Morning
-James Scott,Doctor,Neurology,Wednesday,Night
-James Scott,Doctor,Gynecology,Tuesday,Evening
-John Davis,Admin,Pediatrics,Thursday,Night
-John Davis,Admin,Pediatrics,Sunday,Night
-John Davis,Admin,Pediatrics,Next Tuesday,Morning
-John Davis,Admin,Pediatrics,Next Wednesday,Night
-John Davis,Admin,Surgery,Saturday,Evening
-John Davis,Admin,Surgery,Next Monday,Morning
-John Davis,Admin,Immunology,Next Friday,Night
-John Davis,Admin,Immunology,Next Saturday,Night
-John Davis,Admin,Dermatology,Friday,Night
-John Davis,Admin,Neurology,Next Sunday,Evening
-John Davis,Admin,Psychiatry,Monday,Night
-John King,Nurse,Emergency,Next Wednesday,Evening
-John Thompson,Doctor,Pediatrics,Next Saturday,Evening
-John Thompson,Doctor,Dermatology,Tuesday,Evening
-John Thompson,Doctor,Neurology,Wednesday,Evening
-John Wright,Admin,Cardiology,Thursday,Night
-John Wright,Admin,Cardiology,Sunday,Morning
-John Wright,Admin,Cardiology,Next Wednesday,Evening
-John Wright,Admin,Pediatrics,Friday,Morning
-John Wright,Admin,Pediatrics,Saturday,Night
-John Wright,Admin,Pediatrics,Next Friday,Morning
-John Wright,Admin,Emergency,Next Saturday,Evening
-John Wright,Admin,Surgery,Next Thursday,Night
-John Wright,Admin,Immunology,Wednesday,Evening
-John Wright,Admin,Dermatology,Next Monday,Evening
-John Wright,Admin,Dermatology,Next Sunday,Night
-Joseph Lee,Admin,Pediatrics,Next Saturday,Night
-Joseph Lee,Admin,Emergency,Sunday,Morning
-Joseph Lee,Admin,Dermatology,Friday,Evening
-Joseph Lee,Admin,Neurology,Next Tuesday,Night
-Joseph Lee,Admin,Psychiatry,Wednesday,Evening
-Joseph Lee,Admin,Gynecology,Next Monday,Night
-Joseph Lee,Admin,Urology,Next Wednesday,Evening
-Joseph Lewis,Doctor,Surgery,Next Thursday,Evening
-Joseph Lewis,Doctor,Dermatology,Wednesday,Night
-Joseph Lewis,Doctor,Dermatology,Thursday,Evening
-Joseph Lewis,Doctor,Dermatology,Next Tuesday,Evening
-Joseph Lewis,Doctor,Neurology,Friday,Evening
-Joseph Lewis,Doctor,Psychiatry,Tuesday,Night
-Joseph Lewis,Doctor,Psychiatry,Next Monday,Evening
-Joseph Lewis,Doctor,Gynecology,Saturday,Evening
-Joseph Lewis,Doctor,Urology,Sunday,Morning
-Joseph Lewis,Doctor,Urology,Next Wednesday,Morning
-Joseph Wright,Admin,Emergency,Next Monday,Night
-Liam Harris,Admin,Psychiatry,Friday,Night
-Liam Harris,Admin,Gynecology,Monday,Morning
-Liam Harris,Admin,Urology,Tuesday,Evening
-Liam Harris,Admin,Urology,Sunday,Morning
-Liam Hill,Admin,Emergency,Next Thursday,Night
-Liam Hill,Admin,Immunology,Next Saturday,Evening
-Liam Hill,Admin,Neurology,Wednesday,Morning
-Linda Clark,Nurse,Pediatrics,Next Thursday,Evening
-Linda Clark,Nurse,Surgery,Tuesday,Morning
-Linda Clark,Nurse,Surgery,Next Wednesday,Night
-Linda Clark,Nurse,Immunology,Monday,Evening
-Linda Clark,Nurse,Immunology,Next Friday,Night
-Linda Clark,Nurse,Dermatology,Saturday,Morning
-Linda Clark,Nurse,Neurology,Wednesday,Evening
-Linda Clark,Nurse,Neurology,Sunday,Night
-Linda Clark,Nurse,Urology,Next Monday,Morning
-Linda Hernandez,Nurse,Pediatrics,Next Monday,Night
-Linda Moore,Doctor,Pediatrics,Next Wednesday,Evening
-Linda Moore,Doctor,Surgery,Tuesday,Night
-Linda Moore,Doctor,Gynecology,Thursday,Morning
-Linda White,Nurse,Pediatrics,Sunday,Morning
-Linda White,Nurse,Neurology,Saturday,Evening
-Linda Young,Doctor,Pediatrics,Next Wednesday,Night
-Linda Young,Doctor,Emergency,Sunday,Night
-Linda Young,Doctor,Surgery,Next Saturday,Evening
-Linda Young,Doctor,Immunology,Next Friday,Evening
-Linda Young,Doctor,Dermatology,Friday,Night
-Linda Young,Doctor,Dermatology,Next Sunday,Night
-Linda Young,Doctor,Psychiatry,Wednesday,Night
-Linda Young,Doctor,Urology,Monday,Night
-Linda Young,Doctor,Urology,Next Monday,Evening
-Lisa Jones,Nurse,Cardiology,Wednesday,Evening
-Lisa Jones,Nurse,Cardiology,Next Tuesday,Evening
-Lisa Jones,Nurse,Pediatrics,Next Monday,Morning
-Lisa Jones,Nurse,Pediatrics,Next Wednesday,Evening
-Lisa Jones,Nurse,Emergency,Tuesday,Evening
-Lisa Jones,Nurse,Psychiatry,Monday,Night
-Lucas Allen,Nurse,Cardiology,Thursday,Night
-Lucas Allen,Nurse,Cardiology,Next Thursday,Evening
-Lucas Allen,Nurse,Emergency,Wednesday,Morning
-Lucas Allen,Nurse,Immunology,Saturday,Morning
-Lucas Allen,Nurse,Neurology,Tuesday,Night
-Lucas Allen,Nurse,Gynecology,Next Saturday,Night
-Lucas Allen,Nurse,Urology,Sunday,Evening
-Lucas Allen,Nurse,Urology,Next Sunday,Evening
-Lucas Clark,Doctor,Cardiology,Monday,Evening
-Lucas Clark,Doctor,Cardiology,Next Friday,Night
-Lucas Clark,Doctor,Cardiology,Next Sunday,Morning
-Lucas Clark,Doctor,Surgery,Tuesday,Evening
-Lucas Clark,Doctor,Surgery,Thursday,Night
-Lucas Clark,Doctor,Surgery,Next Wednesday,Morning
-Lucas Clark,Doctor,Immunology,Next Tuesday,Evening
-Lucas Clark,Doctor,Immunology,Next Thursday,Night
-Lucas Clark,Doctor,Immunology,Next Saturday,Morning
-Lucas Clark,Doctor,Urology,Sunday,Evening
-Lucas Miller,Nurse,Neurology,Next Friday,Evening
-Lucas Miller,Nurse,Gynecology,Tuesday,Night
-Lucas Miller,Nurse,Gynecology,Next Sunday,Morning
-Lucas Miller,Nurse,Urology,Wednesday,Morning
-Lucas Miller,Nurse,Urology,Next Tuesday,Night
-Lucas Miller,Nurse,Urology,Next Thursday,Morning
-Lucas Miller,Nurse,Urology,Next Saturday,Night
-Lucas Nguyen,Nurse,Urology,Next Thursday,Evening
-Margaret Robinson,Nurse,Cardiology,Next Sunday,Night
-Margaret Robinson,Nurse,Pediatrics,Next Tuesday,Morning
-Margaret Robinson,Nurse,Dermatology,Wednesday,Morning
-Margaret Robinson,Nurse,Dermatology,Next Monday,Morning
-Margaret Robinson,Nurse,Neurology,Sunday,Evening
-Margaret Robinson,Nurse,Psychiatry,Tuesday,Night
-Margaret Robinson,Nurse,Urology,Friday,Evening
-Margaret Rodriguez,Nurse,Surgery,Next Friday,Night
-Margaret Rodriguez,Nurse,Dermatology,Next Wednesday,Evening
-Margaret Rodriguez,Nurse,Urology,Tuesday,Evening
-Margaret Williams,Doctor,Emergency,Tuesday,Evening
-Margaret Williams,Doctor,Dermatology,Next Friday,Morning
-Mary Miller,Doctor,Cardiology,Monday,Night
-Mary Miller,Doctor,Pediatrics,Friday,Night
-Mary Miller,Doctor,Pediatrics,Next Monday,Morning
-Mary Miller,Doctor,Pediatrics,Next Sunday,Night
-Mary Miller,Doctor,Emergency,Sunday,Evening
-Mary Miller,Doctor,Dermatology,Saturday,Morning
-Mary Miller,Doctor,Neurology,Tuesday,Morning
-Mary Miller,Doctor,Psychiatry,Wednesday,Evening
-Mary Miller,Doctor,Gynecology,Next Wednesday,Night
-Mary Wright,Doctor,Emergency,Next Friday,Morning
-Mary Wright,Doctor,Dermatology,Saturday,Evening
-Mary Wright,Doctor,Gynecology,Next Saturday,Evening
-Mia Brown,Admin,Pediatrics,Next Friday,Evening
-Mia Brown,Admin,Emergency,Monday,Evening
-Mia Brown,Admin,Emergency,Friday,Morning
-Mia Brown,Admin,Dermatology,Next Sunday,Morning
-Mia Brown,Admin,Neurology,Next Wednesday,Night
-Mia Brown,Admin,Gynecology,Sunday,Evening
-Mia Brown,Admin,Urology,Next Saturday,Evening
-Mia Ramirez,Doctor,Dermatology,Wednesday,Morning
-Mia Ramirez,Doctor,Dermatology,Thursday,Morning
-Mia Ramirez,Doctor,Neurology,Next Wednesday,Night
-Noah Allen,Doctor,Immunology,Wednesday,Morning
-Noah Allen,Doctor,Immunology,Next Saturday,Evening
-Noah Johnson,Doctor,Surgery,Thursday,Evening
-Noah Johnson,Doctor,Gynecology,Monday,Morning
-Noah Johnson,Doctor,Urology,Wednesday,Evening
-Noah Miller,Admin,Cardiology,Next Saturday,Evening
-Noah Miller,Admin,Surgery,Next Monday,Night
-Noah Miller,Admin,Urology,Wednesday,Morning
-Noah Wright,Nurse,Immunology,Wednesday,Evening
-Noah Wright,Nurse,Psychiatry,Next Thursday,Night
-Oliver Jackson,Admin,Cardiology,Wednesday,Morning
-Oliver Jackson,Admin,Surgery,Next Wednesday,Evening
-Oliver Jackson,Admin,Gynecology,Sunday,Morning
-Oliver Jones,Admin,Cardiology,Wednesday,Night
-Oliver Jones,Admin,Pediatrics,Tuesday,Evening
-Oliver Jones,Admin,Emergency,Next Wednesday,Night
-Oliver Jones,Admin,Surgery,Monday,Evening
-Oliver Jones,Admin,Surgery,Thursday,Night
-Oliver Jones,Admin,Surgery,Sunday,Night
-Oliver Jones,Admin,Immunology,Next Thursday,Night
-Oliver Jones,Admin,Psychiatry,Saturday,Night
-Oliver Jones,Admin,Psychiatry,Next Saturday,Morning
-Oliver Jones,Admin,Gynecology,Next Sunday,Night
-Oliver Scott,Admin,Pediatrics,Tuesday,Morning
-Oliver Scott,Admin,Surgery,Next Friday,Evening
-Oliver Scott,Admin,Immunology,Thursday,Night
-Oliver Scott,Admin,Immunology,Saturday,Night
-Oliver Scott,Admin,Immunology,Next Monday,Night
-Oliver Scott,Admin,Dermatology,Friday,Morning
-Oliver Scott,Admin,Neurology,Sunday,Night
-Oliver Scott,Admin,Psychiatry,Next Thursday,Evening
-Oliver Scott,Admin,Psychiatry,Next Saturday,Night
-Oliver Scott,Admin,Gynecology,Next Sunday,Evening
-Oliver Walker,Doctor,Pediatrics,Next Friday,Morning
-Oliver Walker,Doctor,Psychiatry,Next Tuesday,Morning
-Oliver Wilson,Admin,Cardiology,Tuesday,Evening
-Oliver Wilson,Admin,Cardiology,Thursday,Morning
-Oliver Wilson,Admin,Cardiology,Next Tuesday,Night
-Oliver Wilson,Admin,Cardiology,Next Friday,Night
-Oliver Wilson,Admin,Pediatrics,Next Thursday,Evening
-Oliver Wilson,Admin,Pediatrics,Next Saturday,Evening
-Oliver Wilson,Admin,Emergency,Monday,Night
-Oliver Wilson,Admin,Emergency,Next Monday,Evening
-Oliver Wilson,Admin,Surgery,Wednesday,Evening
-Oliver Wilson,Admin,Surgery,Friday,Evening
-Oliver Wilson,Admin,Gynecology,Next Wednesday,Evening
-Oliver Wilson,Admin,Urology,Saturday,Morning
-Olivia Allen,Admin,Cardiology,Wednesday,Evening
-Olivia Allen,Admin,Cardiology,Sunday,Night
-Olivia Allen,Admin,Cardiology,Next Friday,Morning
-Olivia Allen,Admin,Cardiology,Next Saturday,Night
-Olivia Allen,Admin,Pediatrics,Saturday,Morning
-Olivia Allen,Admin,Emergency,Next Tuesday,Evening
-Olivia Allen,Admin,Surgery,Next Sunday,Evening
-Olivia Ramirez,Admin,Immunology,Next Thursday,Evening
-Olivia Ramirez,Admin,Neurology,Saturday,Evening
-Olivia Ramirez,Admin,Gynecology,Monday,Night
-Olivia Ramirez,Admin,Gynecology,Sunday,Night
-Olivia Ramirez,Admin,Urology,Friday,Morning
-Olivia Ramirez,Admin,Urology,Next Sunday,Morning
-Olivia Smith,Admin,Surgery,Thursday,Morning
-Olivia Smith,Admin,Immunology,Wednesday,Morning
-Olivia Smith,Admin,Immunology,Friday,Morning
-Olivia Smith,Admin,Immunology,Sunday,Morning
-Olivia Smith,Admin,Dermatology,Next Tuesday,Morning
-Olivia Smith,Admin,Neurology,Tuesday,Night
-Olivia Smith,Admin,Neurology,Next Saturday,Night
-Olivia Smith,Admin,Gynecology,Saturday,Night
-Patricia Nguyen,Admin,Immunology,Next Wednesday,Evening
-Richard Brown,Nurse,Pediatrics,Friday,Evening
-Richard Brown,Nurse,Emergency,Monday,Night
-Richard Brown,Nurse,Emergency,Next Tuesday,Evening
-Richard Brown,Nurse,Emergency,Next Sunday,Evening
-Richard Brown,Nurse,Dermatology,Next Friday,Evening
-Richard Hill,Nurse,Emergency,Next Saturday,Evening
-Richard Hill,Nurse,Surgery,Saturday,Night
-Richard Hill,Nurse,Neurology,Monday,Evening
-Richard Hill,Nurse,Neurology,Next Tuesday,Evening
-Richard Hill,Nurse,Gynecology,Tuesday,Morning
-Richard Jackson,Nurse,Surgery,Next Monday,Morning
-Richard Jackson,Nurse,Immunology,Sunday,Morning
-Richard Jackson,Nurse,Immunology,Next Tuesday,Evening
-Richard Jackson,Nurse,Dermatology,Tuesday,Morning
-Richard Jackson,Nurse,Neurology,Saturday,Night
-Richard Jackson,Nurse,Neurology,Next Saturday,Night
-Richard Johnson,Admin,Pediatrics,Next Wednesday,Evening
-Richard Johnson,Admin,Emergency,Tuesday,Night
-Richard Johnson,Admin,Emergency,Next Monday,Morning
-Richard Johnson,Admin,Surgery,Next Saturday,Night
-Richard Johnson,Admin,Immunology,Next Friday,Morning
-Richard Johnson,Admin,Dermatology,Monday,Morning
-Richard Johnson,Admin,Dermatology,Thursday,Morning
-Richard Johnson,Admin,Neurology,Friday,Night
-Richard Johnson,Admin,Neurology,Next Sunday,Night
-Richard Johnson,Admin,Gynecology,Next Tuesday,Morning
-Richard Walker,Doctor,Cardiology,Next Saturday,Evening
-Richard Walker,Doctor,Surgery,Monday,Morning
-Robert Anderson,Admin,Emergency,Next Thursday,Morning
-Robert Anderson,Admin,Immunology,Next Friday,Evening
-Robert Anderson,Admin,Urology,Next Saturday,Night
-Robert Hill,Nurse,Psychiatry,Next Wednesday,Evening
-Robert Jackson,Nurse,Cardiology,Next Monday,Morning
-Robert Jackson,Nurse,Cardiology,Next Friday,Morning
-Robert Jackson,Nurse,Emergency,Saturday,Morning
-Robert Jackson,Nurse,Immunology,Next Wednesday,Night
-Robert Jackson,Nurse,Immunology,Next Saturday,Night
-Robert Jackson,Nurse,Dermatology,Thursday,Night
-Robert Jackson,Nurse,Gynecology,Friday,Night
-Robert Wright,Doctor,Pediatrics,Sunday,Evening
-Robert Wright,Doctor,Emergency,Friday,Morning
-Robert Wright,Doctor,Immunology,Next Sunday,Morning
-Robert Wright,Doctor,Dermatology,Saturday,Night
-Robert Wright,Doctor,Neurology,Next Tuesday,Evening
-Robert Wright,Doctor,Neurology,Next Friday,Night
-Robert Wright,Doctor,Gynecology,Wednesday,Morning
-Sophia Anderson,Doctor,Surgery,Next Wednesday,Night
-Sophia Miller,Nurse,Gynecology,Friday,Morning
-Sophia Miller,Nurse,Urology,Tuesday,Morning
-Sophia Miller,Nurse,Urology,Saturday,Morning
-Sophia Miller,Nurse,Urology,Next Wednesday,Morning
-Sophia Thompson,Doctor,Pediatrics,Next Saturday,Night
-Susan Gonzalez,Admin,Pediatrics,Next Monday,Night
-Susan Gonzalez,Admin,Emergency,Next Friday,Night
-Susan Gonzalez,Admin,Immunology,Next Thursday,Morning
-Susan Gonzalez,Admin,Gynecology,Tuesday,Evening
-Susan Jones,Nurse,Cardiology,Next Friday,Night
-Susan Jones,Nurse,Emergency,Next Thursday,Night
-Susan Jones,Nurse,Dermatology,Monday,Evening
-Susan Jones,Nurse,Neurology,Thursday,Night
-Susan Perez,Nurse,Pediatrics,Next Sunday,Evening
-Susan Perez,Nurse,Emergency,Friday,Night
-Susan Perez,Nurse,Neurology,Tuesday,Morning
-Susan Perez,Nurse,Neurology,Next Thursday,Morning
-Susan Perez,Nurse,Psychiatry,Wednesday,Evening
-Susan Perez,Nurse,Psychiatry,Saturday,Evening
-Susan Perez,Nurse,Urology,Monday,Night
-Susan Perez,Nurse,Urology,Next Tuesday,Evening
-Susan Smith,Doctor,Surgery,Friday,Evening
-Susan Smith,Doctor,Psychiatry,Next Friday,Night
-Susan Wilson,Admin,Pediatrics,Thursday,Evening
-Susan Wilson,Admin,Psychiatry,Next Saturday,Evening
-Thomas Lewis,Doctor,Surgery,Sunday,Night
-Thomas Lewis,Doctor,Neurology,Tuesday,Evening
-Thomas Lewis,Doctor,Neurology,Next Monday,Night
-Thomas Lewis,Doctor,Gynecology,Monday,Night
-Thomas Lewis,Doctor,Gynecology,Thursday,Evening
-Thomas Lewis,Doctor,Gynecology,Next Tuesday,Evening
-Thomas Lewis,Doctor,Gynecology,Next Saturday,Night
-Thomas Lewis,Doctor,Urology,Saturday,Evening
-Thomas Lewis,Doctor,Urology,Next Thursday,Evening
-Thomas Lopez,Admin,Dermatology,Next Thursday,Morning
-Thomas Lopez,Admin,Psychiatry,Saturday,Evening
-Thomas Lopez,Admin,Urology,Tuesday,Night
-Thomas Lopez,Admin,Urology,Wednesday,Night
-Thomas Lopez,Admin,Urology,Friday,Evening
-Thomas Lopez,Admin,Urology,Sunday,Evening
-Thomas Lopez,Admin,Urology,Next Monday,Morning
-Thomas Lopez,Admin,Urology,Next Friday,Morning
-Thomas Lopez,Admin,Urology,Next Saturday,Morning
-Thomas Thompson,Admin,Psychiatry,Thursday,Morning
-Thomas Thompson,Admin,Urology,Next Sunday,Night
-William Harris,Admin,Gynecology,Next Wednesday,Night
-William Jones,Doctor,Cardiology,Friday,Morning
-William Jones,Doctor,Emergency,Monday,Morning
-William Jones,Doctor,Immunology,Saturday,Night
-William Jones,Doctor,Immunology,Sunday,Night
-William Jones,Doctor,Dermatology,Next Friday,Night
-William Jones,Doctor,Psychiatry,Tuesday,Morning
-William Jones,Doctor,Psychiatry,Wednesday,Morning
-William Jones,Doctor,Urology,Next Tuesday,Evening
-William Lopez,Doctor,Cardiology,Next Saturday,Night
-William Lopez,Doctor,Emergency,Tuesday,Night
-William Lopez,Doctor,Emergency,Next Monday,Night
-William Lopez,Doctor,Immunology,Next Tuesday,Morning
-William Lopez,Doctor,Dermatology,Wednesday,Evening
-William Lopez,Doctor,Psychiatry,Next Wednesday,Night
-William Martin,Admin,Dermatology,Next Friday,Evening
-William Moore,Doctor,Immunology,Thursday,Morning
-William Moore,Doctor,Gynecology,Wednesday,Evening
-William Robinson,Doctor,Neurology,Saturday,Evening
+Employee,Nurse,Department,Days,Shifts
+Alexander Brown,Doctor,Emergency,"(10)","(0)"
+Alexander Brown,Doctor,Surgery,"(12)","(1)"
+Alexander Martin,Nurse,Cardiology,"(13)","(1)"
+Alexander Martin,Nurse,Emergency,"(1, 7, 14)","(1, 0, 1)"
+Alexander Martin,Nurse,Surgery,"(2)","(2)"
+Alexander Martin,Nurse,Dermatology,"(3, 9, 12)","(2, 1, 0)"
+Alexander Martin,Nurse,Neurology,"(5)","(2)"
+Alexander Martin,Nurse,Psychiatry,"(6, 8)","(0, 2)"
+Alexander Martin,Nurse,Gynecology,"(4, 11)","(0, 2)"
+Alexander Perez,Doctor,Cardiology,"(5)","(0)"
+Alexander Perez,Doctor,Pediatrics,"(2)","(1)"
+Alexander Perez,Doctor,Surgery,"(14)","(2)"
+Alexander Perez,Doctor,Immunology,"(12)","(1)"
+Alexander Perez,Doctor,Dermatology,"(10)","(0)"
+Alexander Perez,Doctor,Neurology,"(6)","(1)"
+Alexander Perez,Doctor,Psychiatry,"(8, 13)","(1, 2)"
+Alexander Robinson,Doctor,Cardiology,"(4, 5, 7)","(1, 2, 1)"
+Alexander Robinson,Doctor,Pediatrics,"(2, 11, 14)","(0, 1, 2)"
+Alexander Robinson,Doctor,Emergency,"(13)","(1)"
+Alexander Robinson,Doctor,Surgery,"(8)","(2)"
+Alexander Robinson,Doctor,Immunology,"(9)","(0)"
+Amelia Gonzalez,Admin,Pediatrics,"(13)","(1)"
+Amelia Gonzalez,Admin,Emergency,"(6)","(2)"
+Amelia Gonzalez,Admin,Surgery,"(4, 14)","(2, 0)"
+Amelia Gonzalez,Admin,Dermatology,"(3)","(0)"
+Amelia Gonzalez,Admin,Neurology,"(2, 8, 12)","(2, 0, 0)"
+Amelia Gonzalez,Admin,Gynecology,"(5)","(2)"
+Amelia Gonzalez,Admin,Urology,"(11)","(2)"
+Amelia Lewis,Doctor,Neurology,"(13)","(2)"
+Amelia White,Nurse,Cardiology,"(1, 5, 8, 11, 13, 14)","(1, 1, 2, 1, 0, 1)"
+Amelia White,Nurse,Pediatrics,"(4)","(2)"
+Amelia White,Nurse,Surgery,"(7)","(2)"
+Amelia White,Nurse,Dermatology,"(6)","(0)"
+Amelia White,Nurse,Psychiatry,"(12)","(2)"
+Ava Allen,Nurse,Dermatology,"(7)","(1)"
+Ava Martinez,Doctor,Pediatrics,"(3)","(1)"
+Ava Martinez,Doctor,Emergency,"(4)","(1)"
+Ava Miller,Doctor,Cardiology,"(11)","(2)"
+Ava Miller,Doctor,Pediatrics,"(3)","(0)"
+Ava Miller,Doctor,Emergency,"(12)","(0)"
+Ava Miller,Doctor,Immunology,"(13)","(0)"
+Ava Miller,Doctor,Dermatology,"(9)","(1)"
+Ava Miller,Doctor,Neurology,"(5)","(1)"
+Barbara Davis,Admin,Pediatrics,"(12)","(0)"
+Barbara Davis,Admin,Neurology,"(7)","(1)"
+Barbara Gonzalez,Admin,Neurology,"(9)","(2)"
+Barbara Gonzalez,Admin,Gynecology,"(10)","(1)"
+Barbara Gonzalez,Admin,Urology,"(12)","(0)"
+Barbara Thompson,Nurse,Immunology,"(8)","(1)"
+Benjamin Brown,Admin,Emergency,"(2, 3)","(2, 0)"
+Benjamin Brown,Admin,Dermatology,"(6)","(0)"
+Benjamin Brown,Admin,Psychiatry,"(5, 11)","(1, 0)"
+Benjamin Hill,Doctor,Dermatology,"(9, 11)","(0, 0)"
+Benjamin Hill,Doctor,Psychiatry,"(14)","(0)"
+Benjamin Hill,Doctor,Gynecology,"(6, 8)","(1, 1)"
+Benjamin Hill,Doctor,Urology,"(1, 2, 3, 4, 7, 10, 12)","(2, 0, 0, 2, 0, 0, 2)"
+Benjamin Lewis,Doctor,Neurology,"(4)","(1)"
+Benjamin Thompson,Nurse,Neurology,"(13)","(2)"
+Charles Allen,Nurse,Pediatrics,"(3, 12)","(2, 2)"
+Charles Allen,Nurse,Surgery,"(2, 4, 10)","(0, 2, 1)"
+Charles Allen,Nurse,Immunology,"(11)","(0)"
+Charles Allen,Nurse,Dermatology,"(5)","(1)"
+Charles Allen,Nurse,Neurology,"(1, 14)","(0, 1)"
+Charles Gonzalez,Doctor,Pediatrics,"(9)","(1)"
+Charles Gonzalez,Doctor,Emergency,"(6)","(1)"
+Charles Gonzalez,Doctor,Surgery,"(13)","(0)"
+Charles Gonzalez,Doctor,Neurology,"(8, 12)","(1, 1)"
+Charles Martin,Doctor,Gynecology,"(12)","(0)"
+Charles Miller,Nurse,Dermatology,"(13)","(2)"
+Charlotte Anderson,Doctor,Psychiatry,"(4)","(0)"
+Charlotte Anderson,Doctor,Urology,"(1, 5)","(1, 1)"
+Charlotte Clark,Admin,Dermatology,"(4)","(2)"
+Charlotte Flores,Admin,Dermatology,"(11)","(2)"
+Charlotte Flores,Admin,Gynecology,"(3)","(0)"
+Charlotte Flores,Admin,Urology,"(4)","(0)"
+Charlotte Sanchez,Doctor,Cardiology,"(10)","(1)"
+Charlotte Sanchez,Doctor,Pediatrics,"(7)","(1)"
+Charlotte Sanchez,Doctor,Surgery,"(1, 4)","(0, 1)"
+Charlotte Sanchez,Doctor,Immunology,"(11)","(2)"
+Charlotte Sanchez,Doctor,Psychiatry,"(5)","(1)"
+Charlotte Torres,Nurse,Dermatology,"(10)","(0)"
+Charlotte Torres,Nurse,Psychiatry,"(1, 8)","(1, 0)"
+Charlotte Torres,Nurse,Gynecology,"(4, 13)","(2, 1)"
+Charlotte Torres,Nurse,Urology,"(7, 9)","(1, 1)"
+Charlotte Wilson,Admin,Gynecology,"(4)","(2)"
+David Martinez,Admin,Neurology,"(4)","(2)"
+David Miller,Nurse,Pediatrics,"(7)","(0)"
+David Miller,Nurse,Emergency,"(3, 8, 9)","(2, 1, 0)"
+David Miller,Nurse,Surgery,"(14)","(0)"
+David Miller,Nurse,Immunology,"(6)","(2)"
+David Miller,Nurse,Dermatology,"(5, 10, 13)","(2, 1, 1)"
+David Miller,Nurse,Neurology,"(4)","(1)"
+David Miller,Nurse,Gynecology,"(11)","(1)"
+David Miller,Nurse,Urology,"(12)","(1)"
+David Smith,Admin,Pediatrics,"(8)","(1)"
+David Smith,Admin,Surgery,"(9, 13)","(0, 2)"
+David Smith,Admin,Neurology,"(5)","(2)"
+Dorothy Garcia,Nurse,Cardiology,"(2, 12)","(1, 2)"
+Dorothy Garcia,Nurse,Emergency,"(13, 14)","(1, 0)"
+Dorothy Garcia,Nurse,Surgery,"(1, 4, 5, 11)","(0, 1, 1, 0)"
+Dorothy Garcia,Nurse,Immunology,"(9)","(1)"
+Dorothy Garcia,Nurse,Dermatology,"(7, 8)","(2, 2)"
+Elijah Johnson,Nurse,Cardiology,"(13)","(2)"
+Elijah Johnson,Nurse,Dermatology,"(6)","(2)"
+Elijah Johnson,Nurse,Gynecology,"(2)","(2)"
+Elijah Robinson,Doctor,Cardiology,"(3)","(0)"
+Elijah Robinson,Doctor,Emergency,"(1)","(0)"
+Elijah Robinson,Doctor,Immunology,"(2, 4, 7, 11)","(0, 0, 1, 1)"
+Elijah Robinson,Doctor,Psychiatry,"(10)","(1)"
+Elijah Wilson,Nurse,Pediatrics,"(5, 9, 10, 13)","(0, 0, 0, 1)"
+Elijah Wilson,Nurse,Emergency,"(3, 4, 8)","(0, 2, 2)"
+Elijah Wilson,Nurse,Surgery,"(11)","(1)"
+Elijah Wilson,Nurse,Immunology,"(7)","(0)"
+Elijah Wilson,Nurse,Dermatology,"(14)","(1)"
+Elijah Wilson,Nurse,Neurology,"(6)","(1)"
+Elijah Wilson,Nurse,Psychiatry,"(12)","(1)"
+Elizabeth Brown,Doctor,Cardiology,"(12)","(1)"
+Elizabeth Brown,Doctor,Emergency,"(11)","(2)"
+Elizabeth Brown,Doctor,Surgery,"(14)","(1)"
+Elizabeth Hill,Admin,Emergency,"(9)","(0)"
+Elizabeth Hill,Admin,Surgery,"(5)","(1)"
+Elizabeth Hill,Admin,Immunology,"(1)","(0)"
+Elizabeth Hill,Admin,Neurology,"(3, 13)","(2, 1)"
+Elizabeth Hill,Admin,Urology,"(8, 10)","(0, 0)"
+Elizabeth Sanchez,Nurse,Psychiatry,"(2)","(2)"
+Elizabeth Young,Admin,Surgery,"(3)","(1)"
+Elizabeth Young,Admin,Immunology,"(8)","(1)"
+Emma Lee,Nurse,Dermatology,"(14)","(0)"
+Emma Ramirez,Doctor,Psychiatry,"(2)","(2)"
+Emma Sanchez,Admin,Emergency,"(4)","(2)"
+Emma Williams,Admin,Neurology,"(8, 10)","(1, 2)"
+Evelyn Hill,Nurse,Pediatrics,"(2, 12, 14)","(1, 1, 0)"
+Evelyn Hill,Nurse,Emergency,"(7)","(1)"
+Evelyn Hill,Nurse,Immunology,"(5, 9)","(0, 0)"
+Evelyn Hill,Nurse,Dermatology,"(11)","(2)"
+Evelyn Hill,Nurse,Psychiatry,"(10, 13)","(1, 1)"
+Evelyn Hill,Nurse,Gynecology,"(1)","(2)"
+Evelyn Hill,Nurse,Urology,"(4)","(1)"
+Evelyn Jackson,Doctor,Surgery,"(3)","(0)"
+Evelyn Jackson,Doctor,Immunology,"(2)","(1)"
+Evelyn Jackson,Doctor,Neurology,"(4)","(2)"
+Evelyn Jackson,Doctor,Psychiatry,"(6)","(1)"
+Evelyn Jackson,Doctor,Gynecology,"(9)","(1)"
+Evelyn Jackson,Doctor,Urology,"(5)","(2)"
+Evelyn Johnson,Nurse,Cardiology,"(2, 7)","(2, 0)"
+Evelyn Johnson,Nurse,Pediatrics,"(11)","(0)"
+Evelyn Johnson,Nurse,Immunology,"(12)","(2)"
+Evelyn Johnson,Nurse,Urology,"(3, 6)","(2, 0)"
+Evelyn Thompson,Doctor,Pediatrics,"(12)","(0)"
+Evelyn Thompson,Doctor,Surgery,"(3)","(1)"
+Evelyn Thompson,Doctor,Dermatology,"(5)","(1)"
+Evelyn Thompson,Doctor,Neurology,"(9)","(1)"
+Evelyn Thompson,Doctor,Gynecology,"(2, 7, 14)","(0, 1, 2)"
+Evelyn White,Admin,Cardiology,"(10)","(0)"
+Evelyn White,Admin,Dermatology,"(13)","(0)"
+Evelyn White,Admin,Gynecology,"(14)","(1)"
+Harper Davis,Admin,Pediatrics,"(6)","(2)"
+Harper Davis,Admin,Dermatology,"(4, 8)","(0, 0)"
+Harper Davis,Admin,Neurology,"(1)","(2)"
+Harper Davis,Admin,Psychiatry,"(7)","(0)"
+Harper Davis,Admin,Gynecology,"(2, 11, 13)","(0, 2, 1)"
+Harper Gonzalez,Nurse,Urology,"(4, 10)","(0, 2)"
+Harper Williams,Nurse,Pediatrics,"(1, 6, 9)","(1, 1, 2)"
+Harper Williams,Nurse,Emergency,"(10)","(0)"
+Harper Williams,Nurse,Surgery,"(5, 8, 12)","(0, 0, 2)"
+Harper Williams,Nurse,Immunology,"(2, 3, 11, 14)","(0, 0, 2, 2)"
+Harper Williams,Nurse,Psychiatry,"(13)","(0)"
+Harper Williams,Nurse,Gynecology,"(4)","(1)"
+Henry Allen,Admin,Dermatology,"(11)","(0)"
+Isabella Hernandez,Admin,Cardiology,"(14)","(1)"
+Isabella Hernandez,Admin,Pediatrics,"(1)","(2)"
+Isabella Hernandez,Admin,Immunology,"(5, 9, 13)","(2, 0, 1)"
+Isabella Hernandez,Admin,Dermatology,"(10)","(2)"
+Isabella Hernandez,Admin,Psychiatry,"(4)","(0)"
+Isabella Nguyen,Doctor,Gynecology,"(13)","(1)"
+Isabella Walker,Doctor,Pediatrics,"(4)","(1)"
+James Clark,Doctor,Cardiology,"(7, 10)","(0, 0)"
+James Clark,Doctor,Pediatrics,"(6)","(1)"
+James Clark,Doctor,Emergency,"(12, 13)","(2, 0)"
+James Clark,Doctor,Surgery,"(1, 3, 9)","(2, 2, 1)"
+James Clark,Doctor,Immunology,"(4, 8)","(2, 1)"
+James Clark,Doctor,Dermatology,"(2, 5, 14)","(0, 2, 2)"
+James Hill,Doctor,Cardiology,"(3)","(1)"
+James Hill,Doctor,Psychiatry,"(4)","(1)"
+James Lee,Nurse,Cardiology,"(14)","(2)"
+James Lee,Nurse,Pediatrics,"(12)","(0)"
+James Lee,Nurse,Emergency,"(2)","(0)"
+James Lee,Nurse,Immunology,"(10)","(2)"
+James Lee,Nurse,Psychiatry,"(9, 13)","(0, 2)"
+James Lee,Nurse,Gynecology,"(11)","(0)"
+James Lee,Nurse,Urology,"(3)","(0)"
+James Scott,Doctor,Emergency,"(10)","(2)"
+James Scott,Doctor,Surgery,"(5)","(1)"
+James Scott,Doctor,Dermatology,"(14)","(1)"
+James Scott,Doctor,Neurology,"(3)","(0)"
+James Scott,Doctor,Gynecology,"(2)","(2)"
+John Davis,Admin,Pediatrics,"(4, 7, 9, 10)","(0, 0, 1, 0)"
+John Davis,Admin,Surgery,"(6, 8)","(2, 1)"
+John Davis,Admin,Immunology,"(12, 13)","(0, 0)"
+John Davis,Admin,Dermatology,"(5)","(0)"
+John Davis,Admin,Neurology,"(14)","(2)"
+John Davis,Admin,Psychiatry,"(1)","(0)"
+John King,Nurse,Emergency,"(10)","(2)"
+John Thompson,Doctor,Pediatrics,"(13)","(2)"
+John Thompson,Doctor,Dermatology,"(2)","(2)"
+John Thompson,Doctor,Neurology,"(3)","(2)"
+John Wright,Admin,Cardiology,"(4, 7, 10)","(0, 1, 2)"
+John Wright,Admin,Pediatrics,"(5, 6, 12)","(1, 0, 1)"
+John Wright,Admin,Emergency,"(13)","(2)"
+John Wright,Admin,Surgery,"(11)","(0)"
+John Wright,Admin,Immunology,"(3)","(2)"
+John Wright,Admin,Dermatology,"(8, 14)","(2, 0)"
+Joseph Lee,Admin,Pediatrics,"(13)","(0)"
+Joseph Lee,Admin,Emergency,"(7)","(1)"
+Joseph Lee,Admin,Dermatology,"(5)","(2)"
+Joseph Lee,Admin,Neurology,"(9)","(0)"
+Joseph Lee,Admin,Psychiatry,"(3)","(2)"
+Joseph Lee,Admin,Gynecology,"(8)","(0)"
+Joseph Lee,Admin,Urology,"(10)","(2)"
+Joseph Lewis,Doctor,Surgery,"(11)","(2)"
+Joseph Lewis,Doctor,Dermatology,"(3, 4, 9)","(0, 2, 2)"
+Joseph Lewis,Doctor,Neurology,"(5)","(2)"
+Joseph Lewis,Doctor,Psychiatry,"(2, 8)","(0, 2)"
+Joseph Lewis,Doctor,Gynecology,"(6)","(2)"
+Joseph Lewis,Doctor,Urology,"(7, 10)","(1, 1)"
+Joseph Wright,Admin,Emergency,"(8)","(0)"
+Liam Harris,Admin,Psychiatry,"(5)","(0)"
+Liam Harris,Admin,Gynecology,"(1)","(1)"
+Liam Harris,Admin,Urology,"(2, 7)","(2, 1)"
+Liam Hill,Admin,Emergency,"(11)","(0)"
+Liam Hill,Admin,Immunology,"(13)","(2)"
+Liam Hill,Admin,Neurology,"(3)","(1)"
+Linda Clark,Nurse,Pediatrics,"(11)","(2)"
+Linda Clark,Nurse,Surgery,"(2, 10)","(1, 0)"
+Linda Clark,Nurse,Immunology,"(1, 12)","(2, 0)"
+Linda Clark,Nurse,Dermatology,"(6)","(1)"
+Linda Clark,Nurse,Neurology,"(3, 7)","(2, 0)"
+Linda Clark,Nurse,Urology,"(8)","(1)"
+Linda Hernandez,Nurse,Pediatrics,"(8)","(0)"
+Linda Moore,Doctor,Pediatrics,"(10)","(2)"
+Linda Moore,Doctor,Surgery,"(2)","(0)"
+Linda Moore,Doctor,Gynecology,"(4)","(1)"
+Linda White,Nurse,Pediatrics,"(7)","(1)"
+Linda White,Nurse,Neurology,"(6)","(2)"
+Linda Young,Doctor,Pediatrics,"(10)","(0)"
+Linda Young,Doctor,Emergency,"(7)","(0)"
+Linda Young,Doctor,Surgery,"(13)","(2)"
+Linda Young,Doctor,Immunology,"(12)","(2)"
+Linda Young,Doctor,Dermatology,"(5, 14)","(0, 0)"
+Linda Young,Doctor,Psychiatry,"(3)","(0)"
+Linda Young,Doctor,Urology,"(1, 8)","(0, 2)"
+Lisa Jones,Nurse,Cardiology,"(3, 9)","(2, 2)"
+Lisa Jones,Nurse,Pediatrics,"(8, 10)","(1, 2)"
+Lisa Jones,Nurse,Emergency,"(2)","(2)"
+Lisa Jones,Nurse,Psychiatry,"(1)","(0)"
+Lucas Allen,Nurse,Cardiology,"(4, 11)","(0, 2)"
+Lucas Allen,Nurse,Emergency,"(3)","(1)"
+Lucas Allen,Nurse,Immunology,"(6)","(1)"
+Lucas Allen,Nurse,Neurology,"(2)","(0)"
+Lucas Allen,Nurse,Gynecology,"(13)","(0)"
+Lucas Allen,Nurse,Urology,"(7, 14)","(2, 2)"
+Lucas Clark,Doctor,Cardiology,"(1, 12, 14)","(2, 0, 1)"
+Lucas Clark,Doctor,Surgery,"(2, 4, 10)","(2, 0, 1)"
+Lucas Clark,Doctor,Immunology,"(9, 11, 13)","(2, 0, 1)"
+Lucas Clark,Doctor,Urology,"(7)","(2)"
+Lucas Miller,Nurse,Neurology,"(12)","(2)"
+Lucas Miller,Nurse,Gynecology,"(2, 14)","(0, 1)"
+Lucas Miller,Nurse,Urology,"(3, 9, 11, 13)","(1, 0, 1, 0)"
+Lucas Nguyen,Nurse,Urology,"(11)","(2)"
+Margaret Robinson,Nurse,Cardiology,"(14)","(0)"
+Margaret Robinson,Nurse,Pediatrics,"(9)","(1)"
+Margaret Robinson,Nurse,Dermatology,"(3, 8)","(1, 1)"
+Margaret Robinson,Nurse,Neurology,"(7)","(2)"
+Margaret Robinson,Nurse,Psychiatry,"(2)","(0)"
+Margaret Robinson,Nurse,Urology,"(5)","(2)"
+Margaret Rodriguez,Nurse,Surgery,"(12)","(0)"
+Margaret Rodriguez,Nurse,Dermatology,"(10)","(2)"
+Margaret Rodriguez,Nurse,Urology,"(2)","(2)"
+Margaret Williams,Doctor,Emergency,"(2)","(2)"
+Margaret Williams,Doctor,Dermatology,"(12)","(1)"
+Mary Miller,Doctor,Cardiology,"(1)","(0)"
+Mary Miller,Doctor,Pediatrics,"(5, 8, 14)","(0, 1, 0)"
+Mary Miller,Doctor,Emergency,"(7)","(2)"
+Mary Miller,Doctor,Dermatology,"(6)","(1)"
+Mary Miller,Doctor,Neurology,"(2)","(1)"
+Mary Miller,Doctor,Psychiatry,"(3)","(2)"
+Mary Miller,Doctor,Gynecology,"(10)","(0)"
+Mary Wright,Doctor,Emergency,"(12)","(1)"
+Mary Wright,Doctor,Dermatology,"(6)","(2)"
+Mary Wright,Doctor,Gynecology,"(13)","(2)"
+Mia Brown,Admin,Pediatrics,"(12)","(2)"
+Mia Brown,Admin,Emergency,"(1, 5)","(2, 1)"
+Mia Brown,Admin,Dermatology,"(14)","(1)"
+Mia Brown,Admin,Neurology,"(10)","(0)"
+Mia Brown,Admin,Gynecology,"(7)","(2)"
+Mia Brown,Admin,Urology,"(13)","(2)"
+Mia Ramirez,Doctor,Dermatology,"(3, 4)","(1, 1)"
+Mia Ramirez,Doctor,Neurology,"(10)","(0)"
+Noah Allen,Doctor,Immunology,"(3, 13)","(1, 2)"
+Noah Johnson,Doctor,Surgery,"(4)","(2)"
+Noah Johnson,Doctor,Gynecology,"(1)","(1)"
+Noah Johnson,Doctor,Urology,"(3)","(2)"
+Noah Miller,Admin,Cardiology,"(13)","(2)"
+Noah Miller,Admin,Surgery,"(8)","(0)"
+Noah Miller,Admin,Urology,"(3)","(1)"
+Noah Wright,Nurse,Immunology,"(3)","(2)"
+Noah Wright,Nurse,Psychiatry,"(11)","(0)"
+Oliver Jackson,Admin,Cardiology,"(3)","(1)"
+Oliver Jackson,Admin,Surgery,"(10)","(2)"
+Oliver Jackson,Admin,Gynecology,"(7)","(1)"
+Oliver Jones,Admin,Cardiology,"(3)","(0)"
+Oliver Jones,Admin,Pediatrics,"(2)","(2)"
+Oliver Jones,Admin,Emergency,"(10)","(0)"
+Oliver Jones,Admin,Surgery,"(1, 4, 7)","(2, 0, 0)"
+Oliver Jones,Admin,Immunology,"(11)","(0)"
+Oliver Jones,Admin,Psychiatry,"(6, 13)","(0, 1)"
+Oliver Jones,Admin,Gynecology,"(14)","(0)"
+Oliver Scott,Admin,Pediatrics,"(2)","(1)"
+Oliver Scott,Admin,Surgery,"(12)","(2)"
+Oliver Scott,Admin,Immunology,"(4, 6, 8)","(0, 0, 0)"
+Oliver Scott,Admin,Dermatology,"(5)","(1)"
+Oliver Scott,Admin,Neurology,"(7)","(0)"
+Oliver Scott,Admin,Psychiatry,"(11, 13)","(2, 0)"
+Oliver Scott,Admin,Gynecology,"(14)","(2)"
+Oliver Walker,Doctor,Pediatrics,"(12)","(1)"
+Oliver Walker,Doctor,Psychiatry,"(9)","(1)"
+Oliver Wilson,Admin,Cardiology,"(2, 4, 9, 12)","(2, 1, 0, 0)"
+Oliver Wilson,Admin,Pediatrics,"(11, 13)","(2, 2)"
+Oliver Wilson,Admin,Emergency,"(1, 8)","(0, 2)"
+Oliver Wilson,Admin,Surgery,"(3, 5)","(2, 2)"
+Oliver Wilson,Admin,Gynecology,"(10)","(2)"
+Oliver Wilson,Admin,Urology,"(6)","(1)"
+Olivia Allen,Admin,Cardiology,"(3, 7, 12, 13)","(2, 0, 1, 0)"
+Olivia Allen,Admin,Pediatrics,"(6)","(1)"
+Olivia Allen,Admin,Emergency,"(9)","(2)"
+Olivia Allen,Admin,Surgery,"(14)","(2)"
+Olivia Ramirez,Admin,Immunology,"(11)","(2)"
+Olivia Ramirez,Admin,Neurology,"(6)","(2)"
+Olivia Ramirez,Admin,Gynecology,"(1, 7)","(0, 0)"
+Olivia Ramirez,Admin,Urology,"(5, 14)","(1, 1)"
+Olivia Smith,Admin,Surgery,"(4)","(1)"
+Olivia Smith,Admin,Immunology,"(3, 5, 7)","(1, 1, 1)"
+Olivia Smith,Admin,Dermatology,"(9)","(1)"
+Olivia Smith,Admin,Neurology,"(2, 13)","(0, 0)"
+Olivia Smith,Admin,Gynecology,"(6)","(0)"
+Patricia Nguyen,Admin,Immunology,"(10)","(2)"
+Richard Brown,Nurse,Pediatrics,"(5)","(2)"
+Richard Brown,Nurse,Emergency,"(1, 9, 14)","(0, 2, 2)"
+Richard Brown,Nurse,Dermatology,"(12)","(2)"
+Richard Hill,Nurse,Emergency,"(13)","(2)"
+Richard Hill,Nurse,Surgery,"(6)","(0)"
+Richard Hill,Nurse,Neurology,"(1, 9)","(2, 2)"
+Richard Hill,Nurse,Gynecology,"(2)","(1)"
+Richard Jackson,Nurse,Surgery,"(8)","(1)"
+Richard Jackson,Nurse,Immunology,"(7, 9)","(1, 2)"
+Richard Jackson,Nurse,Dermatology,"(2)","(1)"
+Richard Jackson,Nurse,Neurology,"(6, 13)","(0, 0)"
+Richard Johnson,Admin,Pediatrics,"(10)","(2)"
+Richard Johnson,Admin,Emergency,"(2, 8)","(0, 1)"
+Richard Johnson,Admin,Surgery,"(13)","(0)"
+Richard Johnson,Admin,Immunology,"(12)","(1)"
+Richard Johnson,Admin,Dermatology,"(1, 4)","(1, 1)"
+Richard Johnson,Admin,Neurology,"(5, 14)","(0, 0)"
+Richard Johnson,Admin,Gynecology,"(9)","(1)"
+Richard Walker,Doctor,Cardiology,"(13)","(2)"
+Richard Walker,Doctor,Surgery,"(1)","(1)"
+Robert Anderson,Admin,Emergency,"(11)","(1)"
+Robert Anderson,Admin,Immunology,"(12)","(2)"
+Robert Anderson,Admin,Urology,"(13)","(0)"
+Robert Hill,Nurse,Psychiatry,"(10)","(2)"
+Robert Jackson,Nurse,Cardiology,"(8, 12)","(1, 1)"
+Robert Jackson,Nurse,Emergency,"(6)","(1)"
+Robert Jackson,Nurse,Immunology,"(10, 13)","(0, 0)"
+Robert Jackson,Nurse,Dermatology,"(4)","(0)"
+Robert Jackson,Nurse,Gynecology,"(5)","(0)"
+Robert Wright,Doctor,Pediatrics,"(7)","(2)"
+Robert Wright,Doctor,Emergency,"(5)","(1)"
+Robert Wright,Doctor,Immunology,"(14)","(1)"
+Robert Wright,Doctor,Dermatology,"(6)","(0)"
+Robert Wright,Doctor,Neurology,"(9, 12)","(2, 0)"
+Robert Wright,Doctor,Gynecology,"(3)","(1)"
+Sophia Anderson,Doctor,Surgery,"(10)","(0)"
+Sophia Miller,Nurse,Gynecology,"(5)","(1)"
+Sophia Miller,Nurse,Urology,"(2, 6, 10)","(1, 1, 1)"
+Sophia Thompson,Doctor,Pediatrics,"(13)","(0)"
+Susan Gonzalez,Admin,Pediatrics,"(8)","(0)"
+Susan Gonzalez,Admin,Emergency,"(12)","(0)"
+Susan Gonzalez,Admin,Immunology,"(11)","(1)"
+Susan Gonzalez,Admin,Gynecology,"(2)","(2)"
+Susan Jones,Nurse,Cardiology,"(12)","(0)"
+Susan Jones,Nurse,Emergency,"(11)","(0)"
+Susan Jones,Nurse,Dermatology,"(1)","(2)"
+Susan Jones,Nurse,Neurology,"(4)","(0)"
+Susan Perez,Nurse,Pediatrics,"(14)","(2)"
+Susan Perez,Nurse,Emergency,"(5)","(0)"
+Susan Perez,Nurse,Neurology,"(2, 11)","(1, 1)"
+Susan Perez,Nurse,Psychiatry,"(3, 6)","(2, 2)"
+Susan Perez,Nurse,Urology,"(1, 9)","(0, 2)"
+Susan Smith,Doctor,Surgery,"(5)","(2)"
+Susan Smith,Doctor,Psychiatry,"(12)","(0)"
+Susan Wilson,Admin,Pediatrics,"(4)","(2)"
+Susan Wilson,Admin,Psychiatry,"(13)","(2)"
+Thomas Lewis,Doctor,Surgery,"(7)","(0)"
+Thomas Lewis,Doctor,Neurology,"(2, 8)","(2, 0)"
+Thomas Lewis,Doctor,Gynecology,"(1, 4, 9, 13)","(0, 2, 2, 0)"
+Thomas Lewis,Doctor,Urology,"(6, 11)","(2, 2)"
+Thomas Lopez,Admin,Dermatology,"(11)","(1)"
+Thomas Lopez,Admin,Psychiatry,"(6)","(2)"
+Thomas Lopez,Admin,Urology,"(2, 3, 5, 7, 8, 12, 13)","(0, 0, 2, 2, 1, 1, 1)"
+Thomas Thompson,Admin,Psychiatry,"(4)","(1)"
+Thomas Thompson,Admin,Urology,"(14)","(0)"
+William Harris,Admin,Gynecology,"(10)","(0)"
+William Jones,Doctor,Cardiology,"(5)","(1)"
+William Jones,Doctor,Emergency,"(1)","(1)"
+William Jones,Doctor,Immunology,"(6, 7)","(0, 0)"
+William Jones,Doctor,Dermatology,"(12)","(0)"
+William Jones,Doctor,Psychiatry,"(2, 3)","(1, 1)"
+William Jones,Doctor,Urology,"(9)","(2)"
+William Lopez,Doctor,Cardiology,"(13)","(0)"
+William Lopez,Doctor,Emergency,"(2, 8)","(0, 0)"
+William Lopez,Doctor,Immunology,"(9)","(1)"
+William Lopez,Doctor,Dermatology,"(3)","(2)"
+William Lopez,Doctor,Psychiatry,"(10)","(0)"
+William Martin,Admin,Dermatology,"(12)","(2)"
+William Moore,Doctor,Immunology,"(4)","(1)"
+William Moore,Doctor,Gynecology,"(3)","(2)"
+William Robinson,Doctor,Neurology,"(6)","(2)"
