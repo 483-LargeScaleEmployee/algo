@@ -67,6 +67,12 @@ static void free_grouped_assignment(GroupedAssignment* group) {
 }
 
 static void write_csv_row(FILE* file, const GroupedAssignment* group, const InputData* data) {
+    // Validate inputs
+    if (!group || !data || !file) {
+        fprintf(stderr, "Error: Invalid input to write_csv_row\n");
+        return;
+    }
+
     fprintf(file, "%s,%s,%s,", 
             group->employee_name,
             data->metadata.employee_type_names[group->employee_type_idx],
@@ -74,28 +80,88 @@ static void write_csv_row(FILE* file, const GroupedAssignment* group, const Inpu
     
     // Write days
     if (group->num_entries == 1) {
-        fprintf(file, "(%d),", group->sprint_days[0]);
-        fprintf(file, "(%d)", group->shifts[0]);
+        // Handle single entry case
+        if (group->sprint_days[0] < 0 || group->shifts[0] < 0) {
+            fprintf(stderr, "Warning: Invalid day (%d) or shift (%d)\n", 
+                    group->sprint_days[0], group->shifts[0]);
+            fprintf(file, "(0),(0)");  // Use default values for invalid data
+        } else {
+            fprintf(file, "(%d),", group->sprint_days[0]);
+            fprintf(file, "(%d)", group->shifts[0]);
+        }
     } else {
-        // Write days tuple
+        // Write days tuple with commas
         fprintf(file, "(");
         for (int i = 0; i < group->num_entries; i++) {
-            fprintf(file, "%d%s", 
-                    group->sprint_days[i],
-                    (i < group->num_entries - 1) ? " " : "");
+            if (group->sprint_days[i] < 0) {
+                fprintf(stderr, "Warning: Invalid day value: %d\n", group->sprint_days[i]);
+                fprintf(file, "0");  // Use default value for invalid data
+            } else {
+                fprintf(file, "%d", group->sprint_days[i]);
+            }
+            if (i < group->num_entries - 1) {
+                fprintf(file, ",");  // Use comma instead of space
+            }
         }
         fprintf(file, "),");
         
-        // Write shifts tuple
+        // Write shifts tuple with commas
         fprintf(file, "(");
         for (int i = 0; i < group->num_entries; i++) {
-            fprintf(file, "%d%s", 
-                    group->shifts[i],
-                    (i < group->num_entries - 1) ? " " : "");
+            if (group->shifts[i] < 0) {
+                fprintf(stderr, "Warning: Invalid shift value: %d\n", group->shifts[i]);
+                fprintf(file, "0");  // Use default value for invalid data
+            } else {
+                fprintf(file, "%d", group->shifts[i]);
+            }
+            if (i < group->num_entries - 1) {
+                fprintf(file, ",");  // Use comma instead of space
+            }
         }
         fprintf(file, ")");
     }
     fprintf(file, "\n");
+}
+
+static void add_to_group(GroupedAssignment* group, int day, int shift) {
+    // Validate inputs
+    if (!group) {
+        fprintf(stderr, "Error: Invalid group pointer\n");
+        return;
+    }
+    
+    if (day < 0 || shift < 0) {
+        fprintf(stderr, "Warning: Invalid day (%d) or shift (%d)\n", day, shift);
+        return;
+    }
+    
+    if (group->num_entries >= group->capacity) {
+        group->capacity *= 2;
+        group->sprint_days = realloc(group->sprint_days, group->capacity * sizeof(int));
+        group->shifts = realloc(group->shifts, group->capacity * sizeof(int));
+        
+        if (!group->sprint_days || !group->shifts) {
+            fprintf(stderr, "Error: Memory allocation failed\n");
+            return;
+        }
+    }
+    
+    // Insert in sorted order
+    int insert_pos = 0;
+    while (insert_pos < group->num_entries && group->sprint_days[insert_pos] < day) {
+        insert_pos++;
+    }
+    
+    // Shift existing elements
+    for (int i = group->num_entries; i > insert_pos; i--) {
+        group->sprint_days[i] = group->sprint_days[i-1];
+        group->shifts[i] = group->shifts[i-1];
+    }
+    
+    // Insert new elements
+    group->sprint_days[insert_pos] = day;
+    group->shifts[insert_pos] = shift;
+    group->num_entries++;
 }
 
 static bool process_assignments(FILE* file, const OutputData* output, const InputData* data) {
