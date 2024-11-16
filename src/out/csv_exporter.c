@@ -35,30 +35,6 @@ static GroupedAssignment create_grouped_assignment(const ShiftAssignment* first)
     return group;
 }
 
-static void add_to_group(GroupedAssignment* group, int day, int shift) {
-    if (group->num_entries >= group->capacity) {
-        group->capacity *= 2;
-        group->sprint_days = realloc(group->sprint_days, group->capacity * sizeof(int));
-        group->shifts = realloc(group->shifts, group->capacity * sizeof(int));
-    }
-    
-    // Insert in sorted order
-    int insert_pos = 0;
-    while (insert_pos < group->num_entries && group->sprint_days[insert_pos] < day) {
-        insert_pos++;
-    }
-    
-    // Shift existing elements
-    for (int i = group->num_entries; i > insert_pos; i--) {
-        group->sprint_days[i] = group->sprint_days[i-1];
-        group->shifts[i] = group->shifts[i-1];
-    }
-    
-    // Insert new elements
-    group->sprint_days[insert_pos] = day;
-    group->shifts[insert_pos] = shift;
-    group->num_entries++;
-}
 
 static void free_grouped_assignment(GroupedAssignment* group) {
     free(group->employee_name);
