@@ -19,7 +19,7 @@ static int compare_assignments(const void *a, const void *b) {
     int name_cmp = strcmp(aa->employee_name, bb->employee_name);
     if (name_cmp != 0) return name_cmp;
     if (aa->department_idx != bb->department_idx) return aa->department_idx - bb->department_idx;
-    return aa->sprint_day_idx + bb->sprint_day_idx;
+    return aa->sprint_day_idx - bb->sprint_day_idx;
 }
 
 static GroupedAssignment create_grouped_assignment(const ShiftAssignment* first) {
@@ -82,16 +82,16 @@ static void write_csv_row(FILE* file, const GroupedAssignment* group, const Inpu
         for (int i = 0; i < group->num_entries; i++) {
             fprintf(file, "%d%s", 
                     group->sprint_days[i],
-                    (i < group->num_entries - 1) ? " " : "");
+                    (i < group->num_entries - 1) ? "," : "");
         }
-        fprintf(file, "),");
+        fprintf(file, ")");
         
         // Write shifts tuple
         fprintf(file, "(");
         for (int i = 0; i < group->num_entries; i++) {
             fprintf(file, "%d%s", 
                     group->shifts[i],
-                    (i < group->num_entries - 1) ? " " : "");
+                    (i < group->num_entries - 1) ? "," : "");
         }
         fprintf(file, ")");
     }
