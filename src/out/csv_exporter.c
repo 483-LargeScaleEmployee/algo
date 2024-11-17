@@ -82,12 +82,12 @@ static void write_csv_row(FILE *file, const GroupedAssignment *group,
         fprintf(file, "\"(%d)\",", group->sprint_days[0]);
         
         // Convert shift number to binary string
-        // e.g., shift 0 -> "100", shift 1 -> "010", shift 2 -> "001"
+        // shift 0 -> "100", shift 1 -> "010", shift 2 -> "001"
         char binary_shift[4] = "000";
-        binary_shift[2 - group->shifts[0]] = '1';
+        binary_shift[group->shifts[0]] = '1';  // Now using shift index directly as position
         fprintf(file, "\"(%s)\"", binary_shift);
     } else {
-        // Multiple days case
+        // Multiple days case - Write days
         fprintf(file, "\"(");
         for (int i = 0; i < group->num_entries; i++) {
             fprintf(file, "%d%s", group->sprint_days[i],
@@ -95,12 +95,12 @@ static void write_csv_row(FILE *file, const GroupedAssignment *group,
         }
         fprintf(file, ")\",");
 
-        // Write shifts tuple with binary representation
+        // Write shifts tuple with correct binary representation
         fprintf(file, "\"(");
         for (int i = 0; i < group->num_entries; i++) {
-            // Convert each shift number to binary string
+            // Convert shift number to binary string
             char binary_shift[4] = "000";
-            binary_shift[2 - group->shifts[i]] = '1';
+            binary_shift[group->shifts[i]] = '1';  // Direct position mapping
             
             fprintf(file, "%s%s", binary_shift,
                     (i < group->num_entries - 1) ? ", " : "");
@@ -110,18 +110,17 @@ static void write_csv_row(FILE *file, const GroupedAssignment *group,
     fprintf(file, "\n");
 }
 
-// Helper function to convert shift index to binary representation
+// Helper function to convert shift index to correct binary representation
 static void get_binary_shift_string(int shift_idx, char *output) {
     // Initialize binary string with all zeros
     strcpy(output, "000");
     
     // Set the appropriate position to 1 based on shift index
-    // For 3 shifts: shift 0 -> "100", shift 1 -> "010", shift 2 -> "001"
+    // shift 0 -> "100", shift 1 -> "010", shift 2 -> "001"
     if (shift_idx >= 0 && shift_idx < 3) {
-        output[2 - shift_idx] = '1';
+        output[shift_idx] = '1';  // Direct mapping of index to position
     }
 }
-
 
 static bool process_assignments(FILE *file, const OutputData *output,
                                 const InputData *data) {
