@@ -71,33 +71,57 @@ static void free_grouped_assignment(GroupedAssignment *group) {
 
 static void write_csv_row(FILE *file, const GroupedAssignment *group,
                           const InputData *data) {
-  fprintf(file, "%s,%s,%s,", group->employee_name,
-          data->metadata.employee_type_names[group->employee_type_idx],
-          data->metadata.department_names[group->department_idx]);
+    // Write employee info columns
+    fprintf(file, "%s,%s,%s,", group->employee_name,
+            data->metadata.employee_type_names[group->employee_type_idx],
+            data->metadata.department_names[group->department_idx]);
 
-  // Write days
-  if (group->num_entries == 1) {
-    fprintf(file, "\"(%d)\",", group->sprint_days[0]);
-    fprintf(file, "\"(%d)\"", group->shifts[0]);
-  } else {
     // Write days tuple
-    fprintf(file, "\"(");
-    for (int i = 0; i < group->num_entries; i++) {
-      fprintf(file, "%d%s", group->sprint_days[i],
-              (i < group->num_entries - 1) ? ", " : "");
-    }
-    fprintf(file, ")\",");
+    if (group->num_entries == 1) {
+        // Single day case
+        fprintf(file, "\"(%d)\",", group->sprint_days[0]);
+        
+        // Convert shift number to binary string
+        // e.g., shift 0 -> "100", shift 1 -> "010", shift 2 -> "001"
+        char binary_shift[4] = "000";
+        binary_shift[2 - group->shifts[0]] = '1';
+        fprintf(file, "\"(%s)\"", binary_shift);
+    } else {
+        // Multiple days case
+        fprintf(file, "\"(");
+        for (int i = 0; i < group->num_entries; i++) {
+            fprintf(file, "%d%s", group->sprint_days[i],
+                    (i < group->num_entries - 1) ? ", " : "");
+        }
+        fprintf(file, ")\",");
 
-    // Write shifts tuple
-    fprintf(file, "\"(");
-    for (int i = 0; i < group->num_entries; i++) {
-      fprintf(file, "%d%s", group->shifts[i],
-              (i < group->num_entries - 1) ? ", " : "");
+        // Write shifts tuple with binary representation
+        fprintf(file, "\"(");
+        for (int i = 0; i < group->num_entries; i++) {
+            // Convert each shift number to binary string
+            char binary_shift[4] = "000";
+            binary_shift[2 - group->shifts[i]] = '1';
+            
+            fprintf(file, "%s%s", binary_shift,
+                    (i < group->num_entries - 1) ? ", " : "");
+        }
+        fprintf(file, ")\"");
     }
-    fprintf(file, ")\"");
-  }
-  fprintf(file, "\n");
+    fprintf(file, "\n");
 }
+
+// Helper function to convert shift index to binary representation
+static void get_binary_shift_string(int shift_idx, char *output) {
+    // Initialize binary string with all zeros
+    strcpy(output, "000");
+    
+    // Set the appropriate position to 1 based on shift index
+    // For 3 shifts: shift 0 -> "100", shift 1 -> "010", shift 2 -> "001"
+    if (shift_idx >= 0 && shift_idx < 3) {
+        output[2 - shift_idx] = '1';
+    }
+}
+
 
 static bool process_assignments(FILE *file, const OutputData *output,
                                 const InputData *data) {
