@@ -69,57 +69,108 @@ static void free_grouped_assignment(GroupedAssignment *group) {
   free(group->shifts);
 }
 
+// employee idx, dep_idx is already going to be constant
+typedef struct {
+  int sprint_day_one_idx;
+  int *shift_idx;
+} CsvElement;
+
 static void write_csv_row(FILE *file, const GroupedAssignment *group,
                           const InputData *data) {
-    // Write employee info columns
-    fprintf(file, "%s,%s,%s,", group->employee_name,
-            data->metadata.employee_type_names[group->employee_type_idx],
-            data->metadata.department_names[group->department_idx]);
+  // Write employee info columns
+  fprintf(file, "%s,%s,%s,", group->employee_name,
+          data->metadata.department_names[group->department_idx],
+          data->metadata.employee_type_names[group->employee_type_idx]);
 
-    // Write days tuple
-    if (group->num_entries == 1) {
-        // Single day case
-        fprintf(file, "\"(%d)\",", group->sprint_days[0]);
-        
-        // Convert shift number to binary string
-        // shift 0 -> "100", shift 1 -> "010", shift 2 -> "001"
-        char binary_shift[4] = "000";
-        binary_shift[group->shifts[0]] = '1';  // Now using shift index directly as position
-        fprintf(file, "\"(%s)\"", binary_shift);
-    } else {
-        // Multiple days case - Write days
-        fprintf(file, "\"(");
-        for (int i = 0; i < group->num_entries; i++) {
-            fprintf(file, "%d%s", group->sprint_days[i],
-                    (i < group->num_entries - 1) ? ", " : "");
-        }
-        fprintf(file, ")\",");
+  CsvElement *csv_elements = malloc(group->num_entries * sizeof(CsvElement));
+  int num_csv_elements = 0;
+  // 1 if day is already written, 0 otherwise
+  int *already_written_days = calloc(data->config.num_sprint_days, sizeof(int));
 
-        // Write shifts tuple with correct binary representation
-        fprintf(file, "\"(");
-        for (int i = 0; i < group->num_entries; i++) {
-            // Convert shift number to binary string
-            char binary_shift[4] = "000";
-            binary_shift[group->shifts[i]] = '1';  // Direct position mapping
-            
-            fprintf(file, "%s%s", binary_shift,
-                    (i < group->num_entries - 1) ? ", " : "");
-        }
-        fprintf(file, ")\"");
+  // CsvElement essentially encompasses all shifts for dep, employee, day
+  // convert all grouped assignment to csv element
+  for (int i = 0; i < group->num_entries; i++) {
+
+    // If day is already written, skip
+    if (already_written_days[group->sprint_days[i]] == 1) {
+      continue;
     }
-    fprintf(file, "\n");
+
+    int cur_day = group->sprint_days[i]; // sprint days is already 1 indexed
+
+    int *shift_idx = calloc(data->config.num_shifts, sizeof(int));
+    shift_idx[group->shifts[i]] = 1;
+
+    for (int j = i + 1; j < data->config.num_shifts; j++) {
+      if (group->sprint_days[j] == cur_day) {
+        shift_idx[group->shifts[j]] = 1;
+      }
+    }
+
+    CsvElement csv_element = {.sprint_day_one_idx = cur_day,
+                              .shift_idx = shift_idx};
+    csv_elements[num_csv_elements++] = csv_element;
+    already_written_days[cur_day] = 1;
+  }
+
+  // Write days tuple
+  if (num_csv_elements == 1) {
+    // Single day case
+    fprintf(file, "\"(%d)\",", group->sprint_days[0]);
+
+    char *binary_shift = malloc(data->config.num_shifts * sizeof(char));
+    // initialize all to 0
+    for (int i = 0; i < data->config.num_shifts; i++) {
+      binary_shift[i] = '0';
+      for (int j = 0; j < data->config.num_shifts; j++) {
+        if (csv_elements[0].shift_idx[j] == 1) {
+          binary_shift[j] = '1';
+        }
+      }
+    }
+
+    fprintf(file, "\"(%s)\"", binary_shift);
+  } else {
+    // Multiple days case - Write days
+    fprintf(file, "\"(");
+    for (int i = 0; i < num_csv_elements; i++) {
+      fprintf(file, "%d%s", csv_elements[i].sprint_day_one_idx,
+              (i < num_csv_elements - 1) ? ", " : "");
+    }
+    fprintf(file, ")\",");
+
+    // Write shifts tuple with correct binary representation
+    fprintf(file, "\"(");
+    for (int i = 0; i < num_csv_elements; i++) {
+      char *binary_shift = malloc(data->config.num_shifts * sizeof(char));
+      // initialize all to 0
+      for (int j = 0; j < data->config.num_shifts; j++) {
+        binary_shift[j] = '0';
+        for (int k = 0; k < data->config.num_shifts; k++) {
+          if (csv_elements[i].shift_idx[k] == 1) {
+            binary_shift[k] = '1';
+          }
+        }
+      }
+
+      fprintf(file, "%s%s", binary_shift,
+              (i < num_csv_elements - 1) ? ", " : "");
+    }
+    fprintf(file, ")\"");
+  }
+  fprintf(file, "\n");
 }
 
 // Helper function to convert shift index to correct binary representation
 static void get_binary_shift_string(int shift_idx, char *output) {
-    // Initialize binary string with all zeros
-    strcpy(output, "000");
-    
-    // Set the appropriate position to 1 based on shift index
-    // shift 0 -> "100", shift 1 -> "010", shift 2 -> "001"
-    if (shift_idx >= 0 && shift_idx < 3) {
-        output[shift_idx] = '1';  // Direct mapping of index to position
-    }
+  // Initialize binary string with all zeros
+  strcpy(output, "000");
+
+  // Set the appropriate position to 1 based on shift index
+  // shift 0 -> "100", shift 1 -> "010", shift 2 -> "001"
+  if (shift_idx >= 0 && shift_idx < 3) {
+    output[shift_idx] = '1'; // Direct mapping of index to position
+  }
 }
 
 static bool process_assignments(FILE *file, const OutputData *output,
@@ -177,34 +228,15 @@ static bool process_assignments(FILE *file, const OutputData *output,
   return true;
 }
 
-static bool write_machine_readable_csv(const char *output_dir,
-                                       const OutputData *output,
-                                       const InputData *data) {
+static bool write_csv(const char *output_dir, const OutputData *output,
+                      const InputData *data) {
   char filepath[512];
-  snprintf(filepath, sizeof(filepath), "%s/schedule_machine.csv", output_dir);
+  snprintf(filepath, sizeof(filepath), "%s/schedule.csv", output_dir);
   FILE *file = fopen(filepath, "w");
   if (!file)
     return false;
 
-  fprintf(file, "employee_name,%s,department_name,sprint_days,shifts\n",
-          data->metadata.employee_type_names[0]);
-
-  bool success = process_assignments(file, output, data);
-  fclose(file);
-  return success;
-}
-
-static bool write_human_readable_csv(const char *output_dir,
-                                     const OutputData *output,
-                                     const InputData *data) {
-  char filepath[512];
-  snprintf(filepath, sizeof(filepath), "%s/schedule_human.csv", output_dir);
-  FILE *file = fopen(filepath, "w");
-  if (!file)
-    return false;
-
-  fprintf(file, "Employee,%s,Department,Days,Shifts\n",
-          data->metadata.employee_type_names[0]);
+  fprintf(file, "EmployeeName,Department,Role,Day,Shift\n");
 
   bool success = process_assignments(file, output, data);
   fclose(file);
@@ -218,11 +250,7 @@ bool export_csv(const char *output_dir, const OutputData output,
     return false;
   }
 
-  bool machine_success = write_machine_readable_csv(output_dir, &output, data);
-  if (!machine_success)
-    return false;
-
-  bool human_success = write_human_readable_csv(output_dir, &output, data);
+  bool human_success = write_csv(output_dir, &output, data);
   if (!human_success)
     return false;
 
